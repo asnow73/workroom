@@ -1,0 +1,31 @@
+/* footer */
+$lightGray: #999;
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-top: 1px solid #eaeaea;
+  color: $lightGray;
+
+  a {
+    color: #555;
+    &:hover {
+      color: #00f;
+    }
+  }
+
+  small {
+    float: left;
+  }
+
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
