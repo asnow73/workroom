@@ -28,6 +28,7 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'will_paginate'
 gem 'faker'
 gem 'bootstrap-will_paginate'
+gem 'ransack'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

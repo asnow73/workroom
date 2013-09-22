@@ -1,0 +1,33 @@
+<% provide(:title, 'Admin category') %>
+<h1>Администрирование категорий</h1>
+<%= link_to 'Новая категория...', new_admin_category_path, :class => 'btn btn-primary' %>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th><%= sort_link @q, :id %></th>
+			<th><%= sort_link @q, :name %></th>
+			<th></th>
+		</tr>
+
+		<tbody>
+      <% @categories.each do |item| %>
+        <tr>
+        	<td><%= item.id %></td>
+        	<td><%= item.name %></td>
+        	<td class="btn-group">
+        		<%= link_to edit_admin_category_path(item), class: 'btn btn-mini' do %>
+        		  <i class = "icon-pencil"></i>
+        		<% end %>
+
+						<%= link_to admin_category_path(item), method: :delete, data: { confirm: "Вы уверены?" }, class: 'btn btn-mini btn-danger' do %>
+              <i class = "icon-trash"></i>
+						<% end %>
+
+        	</td>
+        </tr>
+      <% end %>
+    </tbody>
+	</thead>
+</table>
+
+<%= will_paginate @categories %>
