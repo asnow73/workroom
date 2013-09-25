@@ -29,6 +29,7 @@ gem 'will_paginate'
 gem 'faker'
 gem 'bootstrap-will_paginate'
 gem 'ransack'
+gem 'simple_form', '~> 3.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

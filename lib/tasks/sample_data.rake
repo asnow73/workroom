@@ -3,15 +3,24 @@ namespace :db do
   task populate: :environment do
     # make_users
     # make_microposts
-    # make_relationships
     make_categories
+    make_links
   end
 end
 
 def make_categories
-  99.times do |n|
+  35.times do |n|
     name  = "category_#{n+1}"
     Category.create!(name: name)
+  end
+end
+
+def make_links
+  categories = Category.all(limit: 6)
+  35.times do |n|
+    url = "url_#{n+1}"
+    description = Faker::Lorem.sentence(5)
+    categories.each { |category| category.links.create!(url: url, description: description) }  
   end
 end
 
