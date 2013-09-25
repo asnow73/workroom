@@ -3,13 +3,6 @@
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@category, url: admin_category_path(@category)) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-
-      <%= f.submit "Создать категорию", class: "btn btn-large btn-primary" %>
-    <% end %>
+    <%= render 'form', submit_title: "Создать категорию" %>
   </div>
 </div>
