@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :section do
+    sequence(:name) { |n| "Section #{n}" }
+  end
+
   factory :category do
     sequence(:name) { |n| "Category #{n}" }
   end

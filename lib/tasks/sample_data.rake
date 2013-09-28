@@ -3,8 +3,16 @@ namespace :db do
   task populate: :environment do
     # make_users
     # make_microposts
+    make_sections
     make_categories
     make_links
+  end
+end
+
+def make_sections
+  35.times do |n|
+    name = "section_#{n+1}"
+    Section.create!(name: name)
   end
 end
 

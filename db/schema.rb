@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130923173551) do
+ActiveRecord::Schema.define(version: 20130926170832) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -31,5 +31,13 @@ ActiveRecord::Schema.define(version: 20130923173551) do
 
   add_index "links", ["category_id", "created_at"], name: "index_links_on_category_id_and_created_at"
   add_index "links", ["url", "category_id"], name: "index_links_on_url_and_category_id", unique: true
+
+  create_table "sections", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sections", ["name"], name: "index_sections_on_name", unique: true
 
 end

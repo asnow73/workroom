@@ -54,7 +54,7 @@ describe "Admin category" do
 
     describe "with invalid information" do
       before do
-        fill_in "Имя", with: ''
+        fill_in "Название", with: ''
         click_button "Сохранить изменения"
       end
       it { should have_content('error') }
@@ -63,7 +63,7 @@ describe "Admin category" do
     describe "with valid information" do
       let(:new_name)  { "new name" }
       before do
-        fill_in "Имя", with: new_name
+        fill_in "Название", with: new_name
         click_button "Сохранить изменения"
       end
       it { should have_selector('div.alert.alert-success') }
@@ -83,7 +83,7 @@ describe "Admin category" do
 
     describe "with invalid information" do
       before do
-        fill_in "Имя", with: ''
+        fill_in "Название", with: ''
         expect { click_button "Создать категорию" }.not_to change(Category, :count)
       end
       it { should have_content('error') }
@@ -92,7 +92,7 @@ describe "Admin category" do
     describe "with valid information" do
       let(:new_name)  { "new name" }
       before do
-        fill_in "Имя", with: new_name
+        fill_in "Название", with: new_name
         expect { click_button "Создать категорию" }.to change(Category, :count).by(1)
       end
       it { should have_selector('div.alert.alert-success') }
