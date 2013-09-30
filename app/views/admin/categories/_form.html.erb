@@ -2,6 +2,7 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.input :name, label: "Название" %>
+  <%= f.association :section, include_blank: false, label: "Раздел" %>
 
   <%= f.submit submit_title, class: "btn btn-large btn-primary" %>
 <% end %>

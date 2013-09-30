@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe "Admin section" do
-
   subject { page }
 
   describe "index" do
@@ -30,14 +29,13 @@ describe "Admin section" do
   end
 
   describe "deliting section" do
+    let!(:section_for_delete) { FactoryGirl.create(:section) }
     before do
-      FactoryGirl.create(:section, name: "Section1")
-      FactoryGirl.create(:section, name: "Section2")
       visit admin_sections_path
     end
 
     it "should delete section" do
-      expect { click_link('', href: admin_section_path(Section.first)) }.to change(Section, :count).by(-1)
+      expect { click_link('', href: admin_section_path(section_for_delete)) }.to change(Section, :count).by(-1)
       page.should have_selector('div.alert.alert-success')
     end
   end

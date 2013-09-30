@@ -1,7 +1,13 @@
 require 'spec_helper'
 
-describe "Admin link" do
+# def print_db
+#   puts "Category " << Category.all.count.to_s
+#   puts "Link " << Link.all.count.to_s
+#   puts "Section " << Section.all.count.to_s
+# end
 
+describe "Admin link" do
+  # after(:each) { print_db }
   subject { page }
 
   describe "index" do
@@ -15,12 +21,12 @@ describe "Admin link" do
 
     describe "pagination" do
       before(:all) do 
-        category = FactoryGirl.create(:category)
-        32.times { FactoryGirl.create(:link, category: category) }
+        32.times { FactoryGirl.create(:link) }
       end
       after(:all) do
-        Link.delete_all
+        Section.delete_all
         Category.delete_all
+        Link.delete_all
       end
 
       it { should have_selector('div.pagination') }
@@ -35,21 +41,25 @@ describe "Admin link" do
     end
   end
 
-  describe "deliting link" do
+  describe "deleting link" do
+    let!(:link_for_delete) { FactoryGirl.create(:link) }
     before do
-      FactoryGirl.create(:link, url: "url1")
-      FactoryGirl.create(:link, url: "url2")
       visit admin_links_path
     end
 
     it "should delete link" do
-      expect { click_link('', href: admin_link_path(Link.first)) }.to change(Link, :count).by(-1)
+      expect { click_link('', href: admin_link_path(link_for_delete)) }.to change(Link, :count).by(-1)
       page.should have_selector('div.alert.alert-success')
     end
   end
 
   describe "edit" do
-    let(:link) { FactoryGirl.create(:link) }
+    let!(:section_links) { FactoryGirl.create(:section, name: "links") }
+    let!(:category_links) { FactoryGirl.create(:category, section: section_links) }
+    let!(:link) { FactoryGirl.create(:link, category: category_links) }
+
+    let!(:another_category) { FactoryGirl.create(:category) }
+
     before do
       visit edit_admin_link_path(link)
     end
@@ -57,6 +67,8 @@ describe "Admin link" do
     it { should have_title('Admin link update') }
     it { should have_selector('h1', text: 'Обновление ссылки') }
     it { should have_button('Сохранить изменения') }
+    it { find_field('link_category_id').value.should eq link.category.id.to_s }
+    it { should_not have_selector('option', text: another_category.name) }
 
     describe "with invalid information" do
       describe "without url" do
@@ -75,21 +87,6 @@ describe "Admin link" do
         it { should have_content('error') }
       end      
 
-      # describe "without category" do
-      #   before do
-      #     select '', :from => "Категория"
-      #     click_button "Сохранить изменения"
-      #   end
-      #   it { should have_content('error') }
-      # end
-
-      # describe "submitting to the update action" do
-      #   before do
-      #     put admin_link_path(link, params: {link: {url: "aaa", description: "bbb", category_id: ""}} )
-      #   end
-      #   it { should have_selector('div.alert.alert-error') }
-      # end
-
     end
 
     describe "with valid information" do
@@ -104,7 +101,11 @@ describe "Admin link" do
   end
 
   describe "create" do
-    let!(:category) { FactoryGirl.create(:category) }
+    let!(:section_links) { FactoryGirl.create(:section, name: "links") }
+    let!(:category_links) { FactoryGirl.create(:category, section: section_links) }
+
+    let!(:another_category) { FactoryGirl.create(:category) }
+
     before do
       visit new_admin_link_path
     end
@@ -112,7 +113,8 @@ describe "Admin link" do
     it { should have_title('Admin link create') }
     it { should have_selector('h1', text: 'Создание новой ссылки') }
     it { should have_button('Создать ссылку') }
-    it { find_field('link_category_id').value.should eq category.id.to_s }
+    it { find_field('link_category_id').value.should eq category_links.id.to_s }
+    it { should_not have_selector('option', text: another_category.name) }
 
     describe "with invalid information" do
       before do
@@ -126,13 +128,10 @@ describe "Admin link" do
       before do
         fill_in "URL", with: "new url"
         fill_in "Описание", with: "desc"
-        select category.name, :from => "Категория"
+        select category_links.name, :from => "Категория"
         expect { click_button "Создать ссылку" }.to change(Link, :count).by(1)
       end
-      it { should have_selector('div.alert.alert-success') }
-      
+      it { should have_selector('div.alert.alert-success') }      
     end
   end
-
-
 end
