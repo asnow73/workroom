@@ -6,6 +6,7 @@ class Admin::LinksController < ApplicationController
 
   def new
     @link = Link.new
+    @categories_for_links = categories_for_links
   end
 
   def create
@@ -26,6 +27,7 @@ class Admin::LinksController < ApplicationController
 
   def edit
     @link = Link.find(params[:id])
+    @categories_for_links = categories_for_links
   end
 
   def update
@@ -45,4 +47,8 @@ class Admin::LinksController < ApplicationController
       params.require(:link).permit(:url, :description, :category_id)
     end
 
+    def categories_for_links
+      section_id = Section.find_by_name("links")
+      @categories_for_links = Category.where(section_id: section_id)
+    end
 end

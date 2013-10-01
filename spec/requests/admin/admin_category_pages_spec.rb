@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe "Admin category" do
-
   subject { page }
 
   describe "index" do
@@ -14,8 +13,13 @@ describe "Admin category" do
     it { should have_link('Новая категория...', href: new_admin_category_path) }
 
     describe "pagination" do
-      before(:all) { 32.times { FactoryGirl.create(:category) } }
-      after(:all) { Category.delete_all }
+      before(:all) do
+        32.times { FactoryGirl.create(:category) }
+      end
+      after(:all) do
+        Category.delete_all
+        Section.delete_all
+      end
 
       it { should have_selector('div.pagination') }
 
@@ -30,20 +34,19 @@ describe "Admin category" do
   end
 
   describe "deliting category" do
+    let!(:category_for_delete) { FactoryGirl.create(:category) }
     before do
-      FactoryGirl.create(:category, name: "Category1")
-      FactoryGirl.create(:category, name: "Category2")
       visit admin_categories_path
     end
 
     it "should delete category" do
-      expect { click_link('', href: admin_category_path(Category.first)) }.to change(Category, :count).by(-1)
+      expect { click_link('', href: admin_category_path(category_for_delete)) }.to change(Category, :count).by(-1)
       page.should have_selector('div.alert.alert-success')
     end
   end
 
   describe "edit" do
-    let(:category) { FactoryGirl.create(:category) }
+    let!(:category) { FactoryGirl.create(:category) }
     before do
       visit edit_admin_category_path(category)
     end
@@ -51,10 +54,11 @@ describe "Admin category" do
     it { should have_title('Admin category update') }
     it { should have_selector('h1', text: 'Обновление категории') }
     it { should have_button('Сохранить изменения') }
+    it { find_field('category_section_id').value.should eq category.section.id.to_s }
 
     describe "with invalid information" do
       before do
-        fill_in "Имя", with: ''
+        fill_in "Название", with: ''
         click_button "Сохранить изменения"
       end
       it { should have_content('error') }
@@ -63,7 +67,7 @@ describe "Admin category" do
     describe "with valid information" do
       let(:new_name)  { "new name" }
       before do
-        fill_in "Имя", with: new_name
+        fill_in "Название", with: new_name
         click_button "Сохранить изменения"
       end
       it { should have_selector('div.alert.alert-success') }
@@ -72,7 +76,7 @@ describe "Admin category" do
   end
 
   describe "create" do
-    # let(:category) { FactoryGirl.create(:category) }
+    let!(:section) { FactoryGirl.create(:section) }
     before do
       visit new_admin_category_path
     end
@@ -80,10 +84,11 @@ describe "Admin category" do
     it { should have_title('Admin category create') }
     it { should have_selector('h1', text: 'Создание новой категории') }
     it { should have_button('Создать категорию') }
+    it { find_field('category_section_id').value.should eq section.id.to_s }
 
     describe "with invalid information" do
       before do
-        fill_in "Имя", with: ''
+        fill_in "Название", with: ''
         expect { click_button "Создать категорию" }.not_to change(Category, :count)
       end
       it { should have_content('error') }
@@ -92,7 +97,8 @@ describe "Admin category" do
     describe "with valid information" do
       let(:new_name)  { "new name" }
       before do
-        fill_in "Имя", with: new_name
+        fill_in "Название", with: new_name
+        select section.name, :from => "Раздел"
         expect { click_button "Создать категорию" }.to change(Category, :count).by(1)
       end
       it { should have_selector('div.alert.alert-success') }
