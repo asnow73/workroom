@@ -3,7 +3,7 @@
 
   <%= f.input :url, label: 'URL' %>
   <%= f.input :description, as: :text, label: 'Описание' %>
-  <%= f.association :category, include_blank: false, label: 'Категория' %>
+  <%= f.association :category, collection: @categories_for_links, include_blank: false, label: 'Категория' %>
 
   <%= f.submit submit_title, class: "btn btn-large btn-primary" %>
 <% end %>

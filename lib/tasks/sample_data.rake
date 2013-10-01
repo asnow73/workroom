@@ -14,13 +14,20 @@ def make_sections
     name = "section_#{n+1}"
     Section.create!(name: name)
   end
+  Section.create!(name: "links")
+  Section.create!(name: "books")
 end
 
 def make_categories
+  sections = Section.all(limit: 6)
   35.times do |n|
     name  = "category_#{n+1}"
-    Category.create!(name: name)
+    # Category.create!(name: name)
+    sections.each { |section| section.categories.create!(name: name) }
   end
+  section_links = Section.find_by_name("links")
+  section_links.categories.create!(name: "study")
+  section_links.categories.create!(name: "work")
 end
 
 def make_links
