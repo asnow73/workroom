@@ -48,7 +48,7 @@ class Admin::LinksController < ApplicationController
     end
 
     def categories_for_links
-      section_id = Section.find_by_name("links")
-      @categories_for_links = Category.where(section_id: section_id)
+      section = Section.find_by_name("links")
+      Category.where(section_id: section)
     end
 end

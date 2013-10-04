@@ -85,7 +85,7 @@ describe "Admin link" do
           click_button "Сохранить изменения"
         end
         it { should have_content('error') }
-      end      
+      end
 
     end
 

@@ -9,6 +9,7 @@ describe Category do
 
   it { should respond_to(:name) }
   it { should respond_to(:links) }
+  it { should respond_to(:books) }
   it { should respond_to(:section) }
   it { should be_valid }
 
@@ -40,18 +41,34 @@ describe Category do
     it { should be_valid }
   end
 
-  describe "category associations" do
+  describe "category association" do
     before { category.save }
-    let!(:older_link) { FactoryGirl.create(:link, category: category, created_at: 1.day.ago) }
-    let!(:newer_link) { FactoryGirl.create(:link, category: category, created_at: 1.hour.ago) }
 
-    it "should destroy associated links" do
-      links = category.links.to_a
-      category.destroy
-      links.should_not be_empty
-      links.each do |link|
-        Link.find_by_id(link.id).should be_nil
+    describe "with link" do
+      let!(:older_link) { FactoryGirl.create(:link, category: category, created_at: 1.day.ago) }
+      let!(:newer_link) { FactoryGirl.create(:link, category: category, created_at: 1.hour.ago) }
+
+      it "should destroy associated links" do
+        links = category.links.to_a
+        category.destroy
+        links.should_not be_empty
+        links.each do |link|
+          Link.find_by_id(link.id).should be_nil
+        end
       end
     end
+
+    describe "with book" do
+      let!(:book) { FactoryGirl.create(:book, category: category) }
+      it "should destroy associated books" do
+        books = category.books.to_a
+        category.destroy
+        books.should_not be_empty
+        books.each do |book|
+          Book.find_by_id(book.id).should be_nil
+        end
+      end
+    end
+
   end
 end

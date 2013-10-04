@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130928090236) do
+ActiveRecord::Schema.define(version: 20131001193452) do
+
+  create_table "books", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "image_url"
+    t.string   "source_url"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "books", ["name", "category_id"], name: "index_books_on_name_and_category_id", unique: true
 
   create_table "categories", force: true do |t|
     t.string   "name"
