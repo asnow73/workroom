@@ -21,6 +21,13 @@ FactoryGirl.define do
     source_url 'http://www.ozon.ru/context/detail/id/5508646/'
     category
   end
+
+  factory :post do
+    sequence(:title) { |n| "Post #{n}" }
+    content "post content"
+    category
+  end
+
   # factory :user do
   #   sequence(:name) { |n| "Person #{n}" } # name "Michael Hartl"
   #   sequence(:email) { |n| "person_#{n}@example.com" } # email "michael@example.com"
