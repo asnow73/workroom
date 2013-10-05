@@ -1,0 +1,34 @@
+<% provide(:title, 'Admin post') %>
+<h1>Администрирование заметок</h1>
+<%= link_to 'Новая заметка...', new_admin_post_path, :class => 'btn btn-primary' %>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th><%= sort_link @q, :id %></th>
+			<th><%= sort_link @q, :title %></th>
+      <th><%= sort_link @q, :category %></th>
+			<th></th>
+		</tr>
+		<tbody>
+      <% @posts.each do |item| %>
+        <tr>
+        	<td><%= item.id %></td>
+        	<td><%= item.title %></td>
+          <td><%= item.category.name %></td>
+        	<td class="btn-group">
+        		<%= link_to edit_admin_post_path(item), class: 'btn btn-mini' do %>
+        		  <i class = "icon-pencil"></i>
+        		<% end %>
+
+						<%= link_to admin_post_path(item), method: :delete, data: { confirm: "Вы уверены?" }, class: 'btn btn-mini btn-danger' do %>
+              <i class = "icon-trash"></i>
+						<% end %>
+
+        	</td>
+        </tr>
+      <% end %>
+    </tbody>
+	</thead>
+</table>
+
+<%= will_paginate @posts %>
