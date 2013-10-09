@@ -1,4 +1,4 @@
-class Admin::BooksController < ApplicationController
+class Web::Admin::BooksController < ApplicationController
   def index
     @q = Book.ransack params[:q]
     @books = @q.result.order('created_at DESC').page(params[:page])
@@ -6,7 +6,8 @@ class Admin::BooksController < ApplicationController
 
   def new
     @book = Book.new
-    @categories_for_books = categories_for_books
+    # @categories_for_books = categories_for_books
+    @categories_for_books = Book.categories
   end
 
   def create
@@ -27,7 +28,8 @@ class Admin::BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    @categories_for_books = categories_for_books
+    # @categories_for_books = categories_for_books
+    @categories_for_books = Book.categories
   end
 
   def update
@@ -44,10 +46,5 @@ class Admin::BooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:name, :description, :category_id, :image_url, :source_url)
-    end
-
-    def categories_for_books
-      section = Section.find_by_name("books")
-      Category.where(section_id: section)
     end
 end

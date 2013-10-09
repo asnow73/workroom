@@ -1,4 +1,4 @@
-class Admin::LinksController < ApplicationController
+class Web::Admin::LinksController < ApplicationController
   def index
     @q = Link.ransack params[:q]
     @links = @q.result.order('created_at DESC').page(params[:page])
@@ -6,7 +6,8 @@ class Admin::LinksController < ApplicationController
 
   def new
     @link = Link.new
-    @categories_for_links = categories_for_links
+    # @categories_for_links = categories_for_links
+    @categories_for_links = Link.categories
   end
 
   def create
@@ -27,7 +28,8 @@ class Admin::LinksController < ApplicationController
 
   def edit
     @link = Link.find(params[:id])
-    @categories_for_links = categories_for_links
+    # @categories_for_links = categories_for_links
+    @categories_for_links = Link.categories
   end
 
   def update
@@ -45,10 +47,5 @@ class Admin::LinksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
       params.require(:link).permit(:url, :description, :category_id)
-    end
-
-    def categories_for_links
-      section = Section.find_by_name("links")
-      Category.where(section_id: section)
     end
 end

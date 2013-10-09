@@ -1,4 +1,4 @@
-class Admin::SectionsController < ApplicationController
+class Web::Admin::SectionsController < ApplicationController
   def index
     @q = Section.ransack params[:q]
     @sections = @q.result.order('created_at DESC').page(params[:page])
