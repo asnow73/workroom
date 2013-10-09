@@ -2,14 +2,28 @@ Workroom::Application.routes.draw do
   root 'static_pages#home'
   get "static_pages/home"
 
-  namespace :admin do
-    root to: "welcome#index"
-    resources :categories
-    resources :links
-    resources :sections
-    resources :books
-    resources :posts
+  # namespace :admin do
+  #   root to: "welcome#index"
+  #   resources :categories
+  #   resources :links
+  #   resources :sections
+  #   resources :books
+  #   resources :posts
+  # end
+
+  scope module: :web do
+    namespace :admin do
+      root to: "welcome#index"
+      resources :categories
+      resources :links
+      resources :sections
+      resources :books
+      resources :posts
+    end
+
+    resources :posts, only: [:index, :show]
   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
