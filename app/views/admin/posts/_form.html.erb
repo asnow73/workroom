@@ -1,9 +1,0 @@
-<%= simple_form_for(@post, url: admin_post_path(@post)) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-
-  <%= f.input :title, label: 'Заглавие' %>
-  <%= f.input :content, as: :text, label: 'Содержимое' %>
-  <%= f.association :category, collection: @categories_for_posts, include_blank: false, label: 'Категория' %>
-
-  <%= f.submit submit_title, class: "btn btn-large btn-primary" %>
-<% end %>

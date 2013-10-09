@@ -1,5 +1,0 @@
-<%= simple_form_for(@section, url: admin_section_path(@section)) do |f| %>
-  <%= render "shared/error_messages", object: f.object %>
-  <%= f.input :name, label: "Название" %>
-  <%= f.submit submit_title, class: "btn btn-large btn-primary" %>
-<% end %>
