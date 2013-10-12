@@ -9,17 +9,20 @@
 		    <div class="media-body media-body-interval">
 		      <h4 class="media-heading"><%= link_to "#{post.title}", post_path(post) %></h4>
 		      <%= summary_for_html_text(post.content) %>
-		      <div class="color-green">Категория: </div><%= link_to post.category.name, posts_path(posts: {category_id: post.category} ) %>
+		      <div>
+		        <span class="color-green">Категория: </span>
+		        <%= link_to post.category.name, category_posts_path(post.category) %>
+		    	</div>
 		    </div>
 		  <% end %>
 		</div>
 		<%= will_paginate @posts %>
 
   </div>
-	<div class="span2">
+	<div class="fix-position">
 		<div class="color-green"><h3>Категории:</h3></div>
 		<% @categories.each do |category| %>
-		  <div><%= link_to category.name, posts_path(posts: {category_id: category} ) %></div>
+		  <div><%= link_to category.name, category_posts_path(category) %></div>
 		<% end %>
 	</div>
 

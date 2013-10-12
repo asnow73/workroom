@@ -9,3 +9,12 @@
 .color-green {
 	color: green;
 }
+
+.fix-position {
+	  position: fixed; /* Фиксированное положение */
+    right: 5%; /* Расстояние от правого края окна браузера */
+    /*top: 20%;  Расстояние сверху */
+    /*padding: 10px;  Поля вокруг текста */ 
+    /*background: #ffe;  Цвет фона */ 
+    /*border: 1px solid #333;  Параметры рамки */ 
+}
