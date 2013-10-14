@@ -9,7 +9,7 @@ FactoryGirl.define do
   end
 
   factory :link do
-    sequence(:url) { |n| "url #{n}" }
+    sequence(:url) { |n| "http://www.url_#{n}.ru" }
     description "Description url"
     category
   end

@@ -16,10 +16,6 @@ class Web::PostsController < ApplicationController
 
   private
     def posts_params
-      if params[:posts]
-        params.require(:posts).permit(:category_id)
-      else
-        params
-      end
+      params.permit(:category_id)
     end
 end

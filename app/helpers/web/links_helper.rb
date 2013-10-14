@@ -1,0 +1,2 @@
+module Web::LinksHelper
+end

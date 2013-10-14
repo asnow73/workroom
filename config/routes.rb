@@ -21,7 +21,13 @@ Workroom::Application.routes.draw do
       resources :posts
     end
 
+    resources :category, only: [] do
+      resources :posts, only: [:index]
+      resources :links, only: [:index], action: "index_category_links"
+    end
+
     resources :posts, only: [:index, :show]
+    resources :links, only: [:index]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

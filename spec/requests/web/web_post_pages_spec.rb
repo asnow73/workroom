@@ -14,7 +14,7 @@ describe "Web post" do
     it { should have_selector("h2", text: "Заметки") }
     describe "category links" do
       Post.categories.each do |category|
-        page.should have_link(category.name, href: posts_path(posts: {category_id: category}))
+        page.should have_link(category.name, href: category_posts_path(category))
       end
     end
 
@@ -34,7 +34,7 @@ describe "Web post" do
         Post.order('created_at DESC').paginate(page: 1).each do |post|
           page.should have_link("#{post.title}", href: post_path(post) )
           # page.should have_content(summary_for_html_text(post.content)) TODO
-          page.should have_link(post.category.name, href: posts_path(posts: {category_id: post.category} ))
+          page.should have_link(post.category.name, href: category_posts_path(post.category))
         end
       end
     end
