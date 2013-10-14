@@ -7,6 +7,7 @@
 			<th><%= sort_link @q, :id %></th>
 			<th><%= sort_link @q, :title %></th>
       <th><%= sort_link @q, :category %></th>
+      <th><%= sort_link @q, :published %></th>
 			<th></th>
 		</tr>
 		<tbody>
@@ -15,6 +16,7 @@
         	<td><%= item.id %></td>
         	<td><%= item.title %></td>
           <td><%= item.category.name %></td>
+          <td><%= item.published %></td>
         	<td class="btn-group">
         		<%= link_to edit_admin_post_path(item), class: 'btn btn-mini' do %>
         		  <i class = "icon-pencil"></i>
