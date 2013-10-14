@@ -11,9 +11,9 @@ class Link < ActiveRecord::Base
 
   def self.category_links(category, number_links_in_group = nil)
     if number_links_in_group
-      Link.where(category_id: category).limit(number_links_in_group)
+      Link.where(category_id: category).limit(number_links_in_group).order('created_at DESC')
     else
-      Link.where(category_id: category)
+      Link.where(category_id: category).order('created_at DESC')
     end
   end
 

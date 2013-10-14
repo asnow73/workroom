@@ -19,11 +19,8 @@
 		<%= will_paginate @posts %>
 
   </div>
-	<div class="fix-position">
-		<div class="color-green"><h3>Категории:</h3></div>
-		<% @categories.each do |category| %>
-		  <div><%= link_to category.name, category_posts_path(category) %></div>
-		<% end %>
-	</div>
+
+  <%= render 'web/shared/fixed_list_categories', categories: @categories, path_creator: method(:category_posts_path) %>
+
 
 </div>
