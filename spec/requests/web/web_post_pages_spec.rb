@@ -18,6 +18,17 @@ describe "Web post" do
       end
     end
 
+    describe "not show unpublished posts" do
+      let!(:published_post) { FactoryGirl.create(:post, title: "published post") }
+      let!(:unpublished_post) { FactoryGirl.create(:post, title: "unpublished post", published: false) }
+      before do
+        visit posts_path
+      end
+
+      it { should have_link("#{published_post.title}", href: post_path(published_post) ) }
+      it { should_not have_link("#{unpublished_post.title}", href: post_path(unpublished_post) ) }
+    end
+
     describe "pagination" do
       before(:all) do
         35.times { FactoryGirl.create(:post) }
