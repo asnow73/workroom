@@ -26,9 +26,6 @@ describe "Web link" do
   subject { page }
 
   describe "Index links" do
-    # before(:all) { prepare_data }
-    # after(:all) { clear_data }
-
     before do
       visit links_path
     end
@@ -38,7 +35,7 @@ describe "Web link" do
     describe "group links" do
       it "should have all categories title and links" do
         Link.groups_links(10).each do |category, links|
-          page.should have_selector('h2', text: category.name)
+          page.should have_selector('h3', text: category.name)
           links.each do |link|
             page.should have_link("", href: link.url)
             page.should have_content(link.description)

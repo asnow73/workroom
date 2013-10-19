@@ -7,9 +7,11 @@
 			<th><%= sort_link @q, :id %></th>
       <th><%= :image_url %></th>
 			<th><%= sort_link @q, :name %></th>
+      <th><%= sort_link @q, :author %></th>
       <th><%= sort_link @q, :category %></th>
       <th><%= sort_link @q, :description %></th>
       <th><%= :source_url %></th>
+      <th><%= sort_link @q, :published %></th>
 			<th></th>
 		</tr>
 		<tbody>
@@ -20,9 +22,12 @@
             <img src="<%= item.image_url %>" alt="" class="img-rounded">
           </td>
         	<td><%= item.name %></td>
+          <td><%= item.author %></td>
           <td><%= item.category.name %></td>
           <td><%= item.description %></td>
           <td><%= item.source_url %></td>
+          <td><%= item.published %></td>
+
         	<td class="btn-group">
         		<%= link_to edit_admin_book_path(item), class: 'btn btn-mini' do %>
         		  <i class = "icon-pencil"></i>

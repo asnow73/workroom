@@ -30,11 +30,11 @@ def make_categories
   @section_links.categories.create!(name: "work")
 
   # section_books = Section.find_by_name("books")
-  category_programming = @section_books.categories.create!(name: "programming")
-  category_workflow = @section_books.categories.create!(name: "workflow")
+  @section_books.categories.create!(name: "programming")
+  @section_books.categories.create!(name: "workflow")
 
-  @section_posts.categories.push(category_programming)
-  @section_posts.categories.push(category_workflow)
+  @section_posts.categories.create!(name: "adventure")
+  @section_posts.categories.create!(name: "fantastic")
 end
 
 def make_links
