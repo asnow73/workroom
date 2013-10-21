@@ -11,8 +11,7 @@ module ApplicationHelper
     end
   end
 
-  def summary_for_html_text(text)
-    length = 255
+  def summary_for_html_text(text, length = 255)
     return '' if text.blank?
     truncate( sanitize(text, :tags => []), :length => length ).gsub(/\r/, "").gsub(/\n/, "").gsub(/&[a-z]{0-5}\.\.\.$/, "...")
   end

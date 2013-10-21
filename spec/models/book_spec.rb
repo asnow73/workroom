@@ -10,6 +10,8 @@ describe Book do
   it { should respond_to(:image_url) }
   it { should respond_to(:source_url) } 
   it { should respond_to(:category) }
+  it { should respond_to(:published) }
+  it { should respond_to(:author) }
 
   it { should be_valid }
 

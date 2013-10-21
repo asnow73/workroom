@@ -2,10 +2,12 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.input :name, label: 'Название' %>
+  <%= f.input :author, label: 'Автор' %>
   <%= f.input :description, as: :text, label: 'Описание' %>
   <%= f.association :category, collection: @categories_for_books, include_blank: false, label: 'Категория' %>
   <%= f.input :image_url, label: 'Изображение обложки' %>
   <%= f.input :source_url, label: 'Ссылка на книгу' %>
+  <%= f.input :published, label: 'Опубликованно' %>
 
 
   <%= f.submit submit_title, class: "btn btn-large btn-primary" %>

@@ -4,7 +4,7 @@
   <div class="row">
   	<% group.each do |category| %>
       <div class="<%= span_type(group, 12) %>"> <!--TODO magic number -->
-  	  	<h2><%= category.name %></h2>
+  	  	<h3><%= category.name %></h3>
   	  	<% links = @group_links[category] %>
   	  	<% links.each do |link| %>
           <div style="padding: 0 0 7px 0">
@@ -13,7 +13,7 @@
           	<%= summary_for_html_text(link.description) %>
           </div>  	  	
   	  	<% end %>
-  	  	<p><a class="btn" href= "<%= category_links_path(category) %>">Все ссылки &raquo;</a></p>	
+  	  	<p><a class="btn btn-primary" href= "<%= category_links_path(category) %>">Все ссылки &raquo;</a></p>	
   	  </div>
   	<% end %>
   </div>

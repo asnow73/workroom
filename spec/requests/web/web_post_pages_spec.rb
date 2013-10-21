@@ -2,7 +2,28 @@ require 'spec_helper'
 # require 'application_helper'
 # include ApplicationHelper
 
+
 describe "Web post" do
+  def prepare_data
+    section = FactoryGirl.create(:section, name: "posts")
+    @category_1 = FactoryGirl.create(:category, section: section)
+    @category_2 = FactoryGirl.create(:category, section: section)
+
+    36.times do
+      FactoryGirl.create(:post, category: @category_1)
+      FactoryGirl.create(:post, category: @category_2)
+    end
+  end
+
+  def clear_data
+    Section.delete_all
+    Category.delete_all
+    Post.delete_all
+  end
+
+  before(:all) { prepare_data }
+  after(:all) { clear_data }
+
   subject { page }
 
   describe "Index posts" do
@@ -12,7 +33,7 @@ describe "Web post" do
 
     it { should have_title("Web posts") }
     it { should have_selector("h2", text: "Заметки") }
-    describe "category links" do
+    it "category posts" do
       Post.categories.each do |category|
         page.should have_link(category.name, href: category_posts_path(category))
       end
@@ -30,15 +51,6 @@ describe "Web post" do
     end
 
     describe "pagination" do
-      before(:all) do
-        35.times { FactoryGirl.create(:post) }
-      end
-      after(:all) do
-        Post.delete_all
-        Category.delete_all
-        Section.delete_all
-      end
-
       it { should have_selector('div.pagination') }
 
       it "should list each post" do

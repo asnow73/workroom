@@ -1,5 +1,8 @@
 <% provide(:title, 'Web post') %>
 <h2><%= @post.title %></h2>
 <%= @post.content.html_safe %>
-<div class="category-name">Категория: </div><%= link_to "#{@post.category.name}", posts_path(posts: {category_id: @post.category} ) %>
 
+<div>
+  <span class="color-green">Категория: </span>
+  <%= link_to "#{@post.category.name}", posts_path(posts: {category_id: @post.category} ) %>
+</div>
