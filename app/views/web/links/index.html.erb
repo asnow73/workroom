@@ -6,13 +6,7 @@
       <div class="<%= span_type(group, 12) %>"> <!--TODO magic number -->
   	  	<h3><%= category.name %></h3>
   	  	<% links = @group_links[category] %>
-  	  	<% links.each do |link| %>
-          <div style="padding: 0 0 7px 0">
-            <img height="16" width="16" src="http://www.google.com/s2/favicons?domain=<%= link.url %>" />
-          	<%= link_to link.url, link.url %>
-          	<%= summary_for_html_text(link.description) %>
-          </div>  	  	
-  	  	<% end %>
+        <%= render 'web/shared/links/links_list', links: links %>
   	  	<p><a class="btn btn-primary" href= "<%= category_links_path(category) %>">Все ссылки &raquo;</a></p>	
   	  </div>
   	<% end %>

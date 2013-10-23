@@ -1,10 +1,40 @@
 <% provide(:title, 'Home') %>
-<div class="center hero-unit">
+<div class="hero-unit center">
   <h1>WorkRoom</h1>
-
   <h2>
     This is the home page for Albert
   </h2>
+</div>
 
-  <!--<%= link_to "Sign up now!", '#', class: "btn btn-large btn-primary" %>-->
+<div class="row">
+	  <div class="span4">
+	    <h3>Заметки</h3>
+	    <%= render 'web/shared/posts/posts_list', posts: @posts %>
+	  </div>
+
+		<div class="span4">
+			<h3>Полезные ссылки</h3>
+			<%= render 'web/shared/links/links_list', links: @links %>
+		</div>
+
+		<div class="span4">
+			<center>
+				<h3>Хорошая книга</h3>
+				<% @books.each do |book| %>
+				  <a href="<%= book.source_url %>">
+					  <img src="<%= book.image_url %>" alt="<%= book.name %>">
+					</a>
+					<div class="caption">
+					  <h4><%= link_to book.name, book.source_url %></h4>
+					  <p>Автор: <b><%= book.author %></b></p>
+					  <p><%= summary_for_html_text(book.description, @number_symbols_summary_description) %></p>
+					  <div>
+					    <span class="color-green">Категория: </span>
+					    <%= link_to book.category.name, category_books_path(book.category) %>
+					  </div>
+					</div>
+			  <% end %>
+		  </center>
+		</div>
+
 </div>
