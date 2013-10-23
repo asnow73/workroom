@@ -14,7 +14,7 @@
 						    </a>
 						  </td>
 						  <td>
-							  <a href="<%= book.source_url %>"><%= book.name %></a>
+							  <%= link_to book.name, book.source_url %>
 							  <p>Автор: <b><%= book.author %></b></p>
 							  <p><%= summary_for_html_text(book.description, @number_symbols_summary_description) %></p>
 							  <div>

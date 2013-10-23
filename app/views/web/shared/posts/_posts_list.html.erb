@@ -1,0 +1,12 @@
+<div class="media">
+  <% posts.each do |post| %>
+    <div class="media-body media-body-interval">
+      <h4 class="media-heading"><%= link_to "#{post.title}", post_path(post) %></h4>
+      <%= summary_for_html_text(post.content) %>
+      <div>
+        <span class="color-green">Категория: </span>
+        <%= link_to post.category.name, category_posts_path(post.category) %>
+    	</div>
+    </div>
+  <% end %>
+</div>
