@@ -1,4 +1,5 @@
 Workroom::Application.routes.draw do
+  get "users/new"
   root 'static_pages#home'
   get "static_pages/home"
 
@@ -10,6 +11,7 @@ Workroom::Application.routes.draw do
       resources :sections
       resources :books
       resources :posts
+      resources :users
     end
 
     resources :category, only: [] do
