@@ -6,6 +6,7 @@ namespace :db do
     make_links
     make_books
     make_posts
+    make_users
   end
 end
 
@@ -69,16 +70,16 @@ def make_posts
   end
 end
 
-# def make_users
-#   admin = User.create!(name: "Example User", email: "example@railstutorial.org", password: "foobar", password_confirmation: "foobar")
-#   admin.toggle!(:admin)
-#   99.times do |n|
-#     name  = Faker::Name.name
-#     email = "example-#{n+1}@railstutorial.org"
-#     password  = "password"
-#     User.create!(name: name, email: email, password: password, password_confirmation: password)
-#   end
-# end
+def make_users
+  # admin = User.create!(name: "Example User", email: "example@railstutorial.org", password: "foobar", password_confirmation: "foobar")
+  # admin.toggle!(:admin)
+  35.times do |n|
+    name  = Faker::Name.name
+    email = "example-#{n+1}@railstutorial.org"
+    password  = "password"
+    User.create!(name: name, email: email, password: password, password_confirmation: password)
+  end
+end
 
 # def make_microposts
 #   users = User.all(limit: 6)

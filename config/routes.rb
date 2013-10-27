@@ -11,6 +11,7 @@ Workroom::Application.routes.draw do
       resources :sections
       resources :books
       resources :posts
+      resources :users
     end
 
     resources :category, only: [] do
