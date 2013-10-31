@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  padding-top: 42px;
+  padding-top: 72px;
 }
 
 section {
@@ -16,10 +16,54 @@ textarea {
   resize: vertical;
 }
 
+.color-green {
+  color: green;
+}
+
+.fix-position {
+    position: fixed; /* Фиксированное положение */
+    right: 5%; /* Расстояние от правого края окна браузера */
+    /*top: 20%;  Расстояние сверху */
+    /*padding: 10px;  Поля вокруг текста */ 
+    /*background: #ffe;  Цвет фона */ 
+    /*border: 1px solid #333;  Параметры рамки */ 
+}
+
 .center {
   text-align: center;
   margin: auto; /* Выравниваем по центру */
   h1 {
   	margin-bottom: 10px;
   }
+}
+
+.thema-text {
+	font-size: 20pt;
+  margin: 5px 5px 25px 0px;
+}
+
+.category-group {
+  font-size: 20pt;
+  margin: 50px 0px 0px 0px;
+  a {
+    font-size: 14pt;
+  }
+}
+
+
+.button_new_record_db {
+	margin: 0px 0px 5px 0px;
+}
+
+.input-simple-field {
+	width: 50%;
+}
+
+.input-description-field {
+	width: 100%;
+	height: 200px;
+}
+
+.del-edit-buttons-group {
+  width: 50px
 }

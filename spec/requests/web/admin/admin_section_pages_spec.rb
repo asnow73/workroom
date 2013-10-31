@@ -3,13 +3,16 @@ require 'spec_helper'
 describe "Admin section" do
   subject { page }
 
+  let!(:user_admin) { FactoryGirl.create(:user) }
+  before { sign_in(user_admin) }  
+
   describe "index" do
     before do
       visit admin_sections_path
     end
 
     it { should have_title('Admin section') }
-    it { should have_selector('h1', text: 'Администрирование разделов') }
+    it { should have_selector('div', text: 'Администрирование разделов') }
     it { should have_link('Новый раздел...', href: new_admin_section_path) }
 
     describe "pagination" do
@@ -47,7 +50,7 @@ describe "Admin section" do
     end
 
     it { should have_title('Admin section update') }
-    it { should have_selector('h1', text: 'Обновление раздела') }
+    it { should have_selector('div', text: 'Обновление раздела') }
     it { should have_button('Сохранить изменения') }
 
     describe "with invalid information" do
@@ -76,7 +79,7 @@ describe "Admin section" do
     end
 
     it { should have_title('Admin section create') }
-    it { should have_selector('h1', text: 'Создание нового раздела') }
+    it { should have_selector('div', text: 'Создание нового раздела') }
     it { should have_button('Создать раздел') }
 
     describe "with invalid information" do

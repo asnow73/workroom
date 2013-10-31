@@ -1,4 +1,4 @@
-<%= simple_form_for(@category, url: admin_category_path(@category)) do |f| %>
+<%= simple_form_for(@category, url: admin_category_path(@category), defaults: { input_html: { class: 'input-simple-field' } }  ) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.input :name, label: "Название" %>

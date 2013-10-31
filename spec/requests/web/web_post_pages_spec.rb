@@ -32,7 +32,7 @@ describe "Web post" do
     end
 
     it { should have_title("Web posts") }
-    it { should have_selector("h2", text: "Заметки") }
+    it { should have_selector("div", text: "Заметки") }
     it "category posts" do
       Post.categories.each do |category|
         page.should have_link(category.name, href: category_posts_path(category))
@@ -70,7 +70,7 @@ describe "Web post" do
     end
 
     it { should have_title("Web post") }
-    it { should have_selector("h2", text: post.title) }
+    it { should have_selector("div", text: post.title) }
     it { should have_content(post.content) }
     it { should have_link("#{post.category.name}", href: posts_path(posts: {category_id: post.category} )) }
   end

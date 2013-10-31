@@ -35,7 +35,7 @@ describe "Web link" do
     describe "group links" do
       it "should have all categories title and links" do
         Link.groups_links(10).each do |category, links|
-          page.should have_selector('h3', text: category.name)
+          page.should have_selector("div", text: category.name)
           links.each do |link|
             page.should have_link("", href: link.url)
             page.should have_content(link.description)
@@ -53,7 +53,7 @@ describe "Web link" do
     end
 
     it { should have_title("Web category links") }
-    it { should have_selector('h2', @category_1.name) }
+    it { should have_selector("div", @category_1.name) }
     it { should have_selector('div.pagination') }
 
     it "category links" do

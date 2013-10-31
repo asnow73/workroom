@@ -1,6 +1,9 @@
 <% provide(:title, 'Admin section') %>
-<h1>Администрирование разделов</h1>
-<%= link_to 'Новый раздел...', new_admin_section_path, :class => 'btn btn-primary' %>
+<div class="thema-text">Администрирование разделов</div>
+
+<div class="button_new_record_db">
+  <%= link_to 'Новый раздел...', new_admin_section_path, :class => 'btn btn-primary' %>
+</div>
 <table class="table table-bordered">
 	<thead>
 		<tr>
@@ -14,7 +17,7 @@
         <tr>
         	<td><%= item.id %></td>
         	<td><%= item.name %></td>
-        	<td class="btn-group">
+        	<td class="del-edit-buttons-group">
         		<%= link_to edit_admin_section_path(item), class: 'btn btn-mini' do %>
         		  <i class = "icon-pencil"></i>
         		<% end %>

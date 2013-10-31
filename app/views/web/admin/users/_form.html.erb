@@ -1,0 +1,10 @@
+<%= simple_form_for(@user, url: admin_user_path(@user), defaults: { input_html: { class: 'input-simple-field' } }  ) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.input :name, label: 'Имя' %>
+  <%= f.input :email, label: 'e-mail' %>
+  <%= f.input :password, label: 'Пароль' %>
+  <%= f.input :password_confirmation, label: 'Подтверждение пароля' %>
+
+  <%= f.submit submit_title, class: "btn btn-large btn-primary" %>
+<% end %>

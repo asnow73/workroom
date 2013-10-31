@@ -4,7 +4,9 @@
   <div class="row">
   	<% group.each do |category| %>
       <div class="<%= span_type(group, 12) %>"> <!--TODO magic number -->
-  	  	<h3><%= category.name %></h3>
+  	  	<div class="thema-text">
+          <%= category.name %>
+        </div>
   	  	<% links = @group_links[category] %>
         <%= render 'web/shared/links/links_list', links: links %>
   	  	<p><a class="btn btn-primary" href= "<%= category_links_path(category) %>">Все ссылки &raquo;</a></p>	
