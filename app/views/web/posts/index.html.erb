@@ -3,7 +3,9 @@
 <div class="row">
   <div class="span10">
 
-    <h2>Заметки</h2>
+    <div class="thema-text">
+    	Заметки
+    </div>
 		<%= render 'web/shared/posts/posts_list', posts: @posts %>
 		<%= will_paginate @posts %>
 

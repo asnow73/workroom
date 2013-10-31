@@ -3,13 +3,16 @@ require 'spec_helper'
 describe "Admin post" do
   subject { page }
 
+  let!(:user_admin) { FactoryGirl.create(:user) }
+  before { sign_in(user_admin) }    
+
   describe "index" do
     before do
       visit admin_posts_path
     end
 
     it { should have_title("Admin post") }
-    it { should have_selector("h1", text: "Администрирование заметок") }
+    it { should have_selector("div", text: "Администрирование заметок") }
     it { should have_link("Новая заметка...", href: new_admin_post_path) }
 
     describe "pagination" do
@@ -60,7 +63,7 @@ describe "Admin post" do
       end
 
       it { should have_title('Admin post update') }
-      it { should have_selector('h1', text: 'Обновление заметки') }
+      it { should have_selector('div', text: 'Обновление заметки') }
       it { should have_button('Сохранить изменения') }
       it { find_field('post_category_id').value.should eq post.category.id.to_s }
       it { should_not have_selector('option', text: another_category.name) }
@@ -100,7 +103,7 @@ describe "Admin post" do
       end
 
       it { should have_title('Admin post create') }
-      it { should have_selector('h1', text: 'Создание новой заметки') }
+      it { should have_selector('div', text: 'Создание новой заметки') }
       it { should have_button('Создать заметку') }
       it { find_field('post_category_id').value.should eq category_posts.id.to_s }
       it { should_not have_selector('option', text: another_category.name) }

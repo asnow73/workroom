@@ -10,11 +10,15 @@ describe "Authentification" do
     it { should have_title('Sign in') }
 
     describe "with invalid information" do
-      before { click_button "Войти" }
-      it { should have_selector('div.alert.alert-error', text: 'Invalid') }
+      before do
+        fill_in "e-mail", with: "user@user.ru"
+        fill_in "Пароль", with: "wrongpassword"
+        click_button "Войти"
+      end
+      it { should have_selector('div.alert.alert-error') }
 
       describe "after visiting another page" do
-        before { click_link "Домой" }
+        before { click_link "Главная" }
         it { should_not have_selector('div.alert.alert-error') }
       end
     end
@@ -35,6 +39,25 @@ describe "Authentification" do
         it { should have_button('Войти') }
       end
     end
+  end
 
+  describe "authorization" do
+    describe "for non-signed-in users" do
+      let(:user) { FactoryGirl.create(:user) }
+      let!(:post_1) { FactoryGirl.create(:post) }
+
+      describe "in the posts controller" do
+        describe "submitting to the create action" do
+          before { post admin_posts_path }
+          specify { expect(response).to redirect_to(admin_signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          # before { delete admin_posts_path(post_1) }
+          before { delete "admin/posts/" << post_1.id.to_s }
+          specify { expect(response).to redirect_to(admin_signin_path) }
+        end
+      end
+    end
   end
 end

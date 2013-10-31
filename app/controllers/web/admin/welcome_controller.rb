@@ -1,7 +1,4 @@
-class Web::Admin::WelcomeController < ApplicationController
+class Web::Admin::WelcomeController < Web::Admin::AdminApplicationController
   def index
-    if !signed_in?
-      redirect_to admin_signin_path
-    end
   end
 end

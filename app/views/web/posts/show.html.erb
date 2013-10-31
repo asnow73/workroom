@@ -1,5 +1,7 @@
 <% provide(:title, 'Web post') %>
-<h2><%= @post.title %></h2>
+<div class="thema-text">
+	<%= @post.title %>
+</div>
 <%= @post.content.html_safe %>
 
 <div>

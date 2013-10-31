@@ -1,15 +1,13 @@
 <% provide(:title, "Sign in") %>
-<h1>Вход в административную панель</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= simple_form_for(:session, url: admin_sessions_path) do |f| %>
+<div class="center">
+	<div class="thema-text">Вход в административную панель</div>
+  <%= simple_form_for(:session, url: admin_sessions_path) do |f| %>
 
-      <%= f.input :email, label: 'e-mail' %>
-      <%= f.input :password, label: 'Пароль' %>
+    <%= f.input :email, label: 'e-mail' %>
+    <%= f.input :password, label: 'Пароль' %>
 
-      <%= f.submit "Войти", class: "btn btn-large btn-primary" %>
-    <% end %>
+    <%= f.submit "Войти", class: "btn btn-large btn-primary" %>
+  <% end %>
 
-  </div>
 </div>

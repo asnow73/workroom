@@ -1,4 +1,4 @@
-class Web::Admin::UsersController < ApplicationController
+class Web::Admin::UsersController < Web::Admin::AdminApplicationController
   def index
     @q = User.ransack params[:q]
     @users = @q.result.order('created_at DESC').page(params[:page])

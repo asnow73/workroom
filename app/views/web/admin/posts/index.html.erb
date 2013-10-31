@@ -1,6 +1,9 @@
 <% provide(:title, 'Admin post') %>
-<h1>Администрирование заметок</h1>
-<%= link_to 'Новая заметка...', new_admin_post_path, :class => 'btn btn-primary' %>
+<div class="thema-text">Администрирование заметок</div>
+
+<div class="button_new_record_db">
+  <%= link_to 'Новая заметка...', new_admin_post_path, :class => 'btn btn-primary' %>
+</div>
 <table class="table table-bordered">
 	<thead>
 		<tr>
@@ -17,7 +20,7 @@
         	<td><%= item.title %></td>
           <td><%= item.category.name %></td>
           <td><%= item.published %></td>
-        	<td class="btn-group">
+        	<td class="del-edit-buttons-group">
         		<%= link_to edit_admin_post_path(item), class: 'btn btn-mini' do %>
         		  <i class = "icon-pencil"></i>
         		<% end %>

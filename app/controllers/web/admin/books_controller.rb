@@ -1,4 +1,4 @@
-class Web::Admin::BooksController < ApplicationController
+class Web::Admin::BooksController < Web::Admin::AdminApplicationController
   def index
     @q = Book.ransack params[:q]
     @books = @q.result.order('created_at DESC').page(params[:page])

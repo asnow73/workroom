@@ -1,8 +1,10 @@
   <% if categories.count > 0 %>
-		<div class="fix-position">
-			<div class="color-green"><h3>Категории:</h3></div>
-			<% categories.each do |category| %>
-			  <div><%= link_to category.name, path_creator.call(category) %></div>
-			<% end %>
+		<div class="fix-position category-group">
+			<div class="color-green">
+				Категории:
+			</div>
+		  <% categories.each do |category| %>
+		    <div><%= link_to category.name, path_creator.call(category) %></div>
+		  <% end %>
 		</div>
 	<% end %>
