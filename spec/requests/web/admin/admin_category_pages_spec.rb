@@ -3,13 +3,16 @@ require 'spec_helper'
 describe "Admin category" do
   subject { page }
 
+  let!(:user_admin) { FactoryGirl.create(:user) }
+  before { sign_in(user_admin) }      
+
   describe "index" do
     before do
       visit admin_categories_path
     end
 
     it { should have_title('Admin category') }
-    it { should have_selector('h1', text: 'Администрирование категорий') }
+    it { should have_selector('div', text: 'Администрирование категорий') }
     it { should have_link('Новая категория...', href: new_admin_category_path) }
 
     describe "pagination" do
@@ -52,7 +55,7 @@ describe "Admin category" do
     end
 
     it { should have_title('Admin category update') }
-    it { should have_selector('h1', text: 'Обновление категории') }
+    it { should have_selector('div', text: 'Обновление категории') }
     it { should have_button('Сохранить изменения') }
     it { find_field('category_section_id').value.should eq category.section.id.to_s }
 
@@ -82,7 +85,7 @@ describe "Admin category" do
     end
 
     it { should have_title('Admin category create') }
-    it { should have_selector('h1', text: 'Создание новой категории') }
+    it { should have_selector('div', text: 'Создание новой категории') }
     it { should have_button('Создать категорию') }
     it { find_field('category_section_id').value.should eq section.id.to_s }
 

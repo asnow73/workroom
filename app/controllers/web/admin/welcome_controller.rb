@@ -1,4 +1,4 @@
-class Web::Admin::WelcomeController < ApplicationController
+class Web::Admin::WelcomeController < Web::Admin::AdminApplicationController
   def index
   end
 end

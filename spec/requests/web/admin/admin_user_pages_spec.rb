@@ -2,14 +2,18 @@ require 'spec_helper'
 
 describe "Admin user" do
   subject { page }
+  
+  let!(:user_admin) { FactoryGirl.create(:user) }
+  before { sign_in(user_admin) }
 
   describe "index" do
+    
     before do
       visit admin_users_path
     end
 
     it { should have_title("Admin user") }
-    it { should have_selector("h1", text: "Администрирование пользователей") }
+    it { should have_selector("div", text: "Администрирование пользователей") }
     it { should have_link("Новый пользователь...", href: new_admin_user_path) }
 
     describe "pagination" do
@@ -43,6 +47,11 @@ describe "Admin user" do
       expect { click_link('', href: admin_user_path(user_for_delete)) }.to change(User, :count).by(-1)
       page.should have_selector('div.alert.alert-success')
     end
+
+    it "should not delete current user" do
+      expect { click_link('', href: admin_user_path(user_admin)) }.to_not change(User, :count)
+      page.should have_selector('div.alert.alert-error')
+    end
   end
 
   describe "edit" do
@@ -53,7 +62,7 @@ describe "Admin user" do
     end
 
     it { should have_title('Admin user update') }
-    it { should have_selector('h1', text: 'Обновление пользователя') }
+    it { should have_selector('div', text: 'Обновление пользователя') }
     it { should have_button('Сохранить изменения') }
 
     describe "with invalid information" do
@@ -93,7 +102,7 @@ describe "Admin user" do
     end
 
     it { should have_title('Admin user create') }
-    it { should have_selector('h1', text: 'Создание нового пользователя') }
+    it { should have_selector('div', text: 'Создание нового пользователя') }
     it { should have_button('Создать пользователя') }
 
     describe "with invalid information" do

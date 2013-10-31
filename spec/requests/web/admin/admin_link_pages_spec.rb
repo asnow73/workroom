@@ -10,13 +10,16 @@ describe "Admin link" do
   # after(:each) { print_db }
   subject { page }
 
+  let!(:user_admin) { FactoryGirl.create(:user) }
+  before { sign_in(user_admin) }    
+
   describe "index" do
     before do
       visit admin_links_path
     end
 
     it { should have_title('Admin link') }
-    it { should have_selector('h1', text: 'Администрирование ссылок') }
+    it { should have_selector('div', text: 'Администрирование ссылок') }
     it { should have_link('Новая ссылка...', href: new_admin_link_path) }
 
     describe "pagination" do
@@ -65,7 +68,7 @@ describe "Admin link" do
     end
 
     it { should have_title('Admin link update') }
-    it { should have_selector('h1', text: 'Обновление ссылки') }
+    it { should have_selector('div', text: 'Обновление ссылки') }
     it { should have_button('Сохранить изменения') }
     it { find_field('link_category_id').value.should eq link.category.id.to_s }
     it { should_not have_selector('option', text: another_category.name) }
@@ -111,7 +114,7 @@ describe "Admin link" do
     end
 
     it { should have_title('Admin link create') }
-    it { should have_selector('h1', text: 'Создание новой ссылки') }
+    it { should have_selector('div', text: 'Создание новой ссылки') }
     it { should have_button('Создать ссылку') }
     it { find_field('link_category_id').value.should eq category_links.id.to_s }
     it { should_not have_selector('option', text: another_category.name) }

@@ -1,4 +1,4 @@
-<%= simple_form_for(@user, url: admin_user_path(@user)) do |f| %>
+<%= simple_form_for(@user, url: admin_user_path(@user), defaults: { input_html: { class: 'input-simple-field' } }  ) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.input :name, label: 'Имя' %>

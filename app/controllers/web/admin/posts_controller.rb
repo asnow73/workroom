@@ -1,4 +1,4 @@
-class Web::Admin::PostsController < ApplicationController
+class Web::Admin::PostsController < Web::Admin::AdminApplicationController
   def index
     @q = Post.ransack params[:q]
     @posts = @q.result.order('created_at DESC').page(params[:page])

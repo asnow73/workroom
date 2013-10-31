@@ -1,4 +1,4 @@
-class Web::Admin::UsersController < ApplicationController
+class Web::Admin::UsersController < Web::Admin::AdminApplicationController
   def index
     @q = User.ransack params[:q]
     @users = @q.result.order('created_at DESC').page(params[:page])
@@ -19,8 +19,13 @@ class Web::Admin::UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "Пользователь удален"
+    user = User.find(params[:id])
+    if (user == current_user)
+      flash[:error] = "Вы не можете удалить собственный аакаунт"
+    else
+      user.destroy
+      flash[:success] = "Пользователь удален"
+    end
     redirect_to admin_users_url
   end
 

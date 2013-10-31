@@ -2,7 +2,9 @@
 
 <div class="row">
   <div class="span10">
-    <h2><%= @category.name %></h2>
+    <div class="thema-text">
+      <%= @category.name %>
+    </div>
     <% pairs_links = @links.each_slice(2).to_a %>
     <% pairs_links.each do |pair| %>
       <div class="row">

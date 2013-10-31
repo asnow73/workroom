@@ -1,4 +1,4 @@
-class Web::Admin::CategoriesController < ApplicationController
+class Web::Admin::CategoriesController < Web::Admin::AdminApplicationController
   def index
     # @categories = Category.paginate(page: params[:page])
     @q = Category.ransack params[:q]

@@ -1,9 +1,9 @@
-<%= simple_form_for(@link, url: admin_link_path(@link)) do |f| %>
+<%= simple_form_for(@link, url: admin_link_path(@link), defaults: { input_html: { class: 'input-simple-field' } } ) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.input :url, label: 'URL' %>
-  <%= f.input :description, as: :text, label: 'Описание' %>
   <%= f.association :category, collection: @categories_for_links, include_blank: false, label: 'Категория' %>
-
+  <%= f.input :description, as: :text, label: 'Описание', :input_html => {:class => 'input-description-field'} %>
+  
   <%= f.submit submit_title, class: "btn btn-large btn-primary" %>
 <% end %>

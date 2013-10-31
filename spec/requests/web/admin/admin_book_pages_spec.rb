@@ -3,13 +3,16 @@ require 'spec_helper'
 describe "Admin book" do
   subject { page }
 
+  let!(:user_admin) { FactoryGirl.create(:user) }
+  before { sign_in(user_admin) }      
+
   describe "index" do
     before do
       visit admin_books_path
     end
 
     it { should have_title('Admin book') }
-    it { should have_selector('h1', text: 'Администрирование книг') }
+    it { should have_selector('div', text: 'Администрирование книг') }
     it { should have_link('Новая книга...', href: new_admin_book_path) }
 
     describe "pagination" do
@@ -58,7 +61,7 @@ describe "Admin book" do
     end
 
     it { should have_title('Admin book update') }
-    it { should have_selector('h1', text: 'Обновление книги') }
+    it { should have_selector('div', text: 'Обновление книги') }
     it { should have_button('Сохранить изменения') }
     it { find_field('book_category_id').value.should eq book.category.id.to_s }
     it { should_not have_selector('option', text: another_category.name) }
@@ -103,7 +106,7 @@ describe "Admin book" do
     end
 
     it { should have_title('Admin book create') }
-    it { should have_selector('h1', text: 'Создание новой книги') }
+    it { should have_selector('div', text: 'Создание новой книги') }
     it { should have_button('Создать книгу') }
     it { find_field('book_category_id').value.should eq category_books.id.to_s }
     it { should_not have_selector('option', text: another_category.name) }
