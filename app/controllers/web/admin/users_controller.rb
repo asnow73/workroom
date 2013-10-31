@@ -19,8 +19,13 @@ class Web::Admin::UsersController < Web::Admin::AdminApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "Пользователь удален"
+    user = User.find(params[:id])
+    if (user == current_user)
+      flash[:error] = "Вы не можете удалить собственный аакаунт"
+    else
+      user.destroy
+      flash[:success] = "Пользователь удален"
+    end
     redirect_to admin_users_url
   end
 
