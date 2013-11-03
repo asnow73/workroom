@@ -1,9 +1,45 @@
 <% provide(:title, 'Home') %>
-<div class="hero-unit center">
-  <h1>WorkRoom</h1>
-  <h2>
-    This is the home page for Albert
-  </h2>
+
+<div style="width: 100%; height: 170px; background: url(<%= asset_path 'slide-01.jpg' %>)">
+
+	<div id="myCarousel" class="carousel slide">
+		<div class="carousel-inner">
+
+			<div class="item active">
+				<div class="container">
+					<div class="carousel-caption">
+						<h1>Обратная связь.</h1>
+						<p class="lead">По всем вопросам и предложениям прошу писать мне на почту albertulgu@list.ru.</p>
+						<!-- <a class="btn btn-large btn-primary" href="#">Sign up today</a>		 -->
+					</div>
+				</div>
+			</div>
+			
+			<div class="item">
+				<div class="container">
+					<div class="carousel-caption">
+						<h1>Об этом сайте.</h1>
+						<p class="lead">Сайт на фреймворке Ruby on Rails. Это мой первый сайт написанный по данной технологии. На данный момент этот сайт для меня является экспериментом.</p>
+						<!-- <a class="btn btn-large btn-primary" href="#">Learn more</a> -->
+					</div>
+				</div>
+			</div>
+
+			<div class="item">
+				<div class="container">
+					<div class="carousel-caption">
+						<h1>Обо мне.</h1>
+						<p class="lead">Я программист. В данный момент, занимаюсь разработкой систем электронной индикации для российских вертолётов. Подробнее обо мне можно узнать в резюме.</p>
+						<!-- <a class="btn btn-large btn-primary" href="#">Browse gallery</a> -->
+					</div>
+				</div>
+			</div>
+		
+		</div>
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+	</div> 
+
 </div>
 
 <div class="row">
