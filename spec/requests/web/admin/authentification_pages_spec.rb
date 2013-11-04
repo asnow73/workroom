@@ -3,6 +3,22 @@ require 'spec_helper'
 describe "Authentification" do
   subject { page }
 
+  describe "init first admin in sysstem" do
+    describe "create first admin with email admin@admin.ru" do
+      before { visit admin_signin_path }
+      it { should have_selector('div.alert.alert-notice') }
+    end
+
+    describe "create first admin with email admin@admin.ru" do
+      let!(:user) { FactoryGirl.create(:user) }
+      before do
+       visit admin_signin_path
+      end
+      it { should_not have_selector('div.alert.alert-notice') }
+    end
+  end
+
+
   describe "signin page" do
     before { visit admin_signin_path }
 
