@@ -7,4 +7,7 @@ class StaticPagesController < ApplicationController
     @books = Book.order('RANDOM()').first(1)
     @number_symbols_summary_description = 128
   end
+
+  def resume
+  end
 end

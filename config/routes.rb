@@ -2,6 +2,7 @@ Workroom::Application.routes.draw do
   get "users/new"
   root 'static_pages#home'
   get "static_pages/home"
+  get "static_pages/resume"
 
   scope module: :web do
     namespace :admin do
