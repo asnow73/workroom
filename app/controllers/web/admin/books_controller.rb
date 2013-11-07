@@ -45,6 +45,6 @@ class Web::Admin::BooksController < Web::Admin::AdminApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:name, :description, :category_id, :image_url, :source_url)
+      params.require(:book).permit(:name, :author, :description, :category_id, :image_url, :source_url)
     end
 end
