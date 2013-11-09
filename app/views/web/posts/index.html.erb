@@ -11,6 +11,8 @@
 
   </div>
 
-  <%= render 'web/shared/fixed_list_categories', categories: @categories, path_creator: method(:category_posts_path) %>
+  <div class="span2">
+    <%= render 'web/shared/fixed_list_categories', categories: @categories, path_creator: method(:category_posts_path) %>
+  </div>
 
 </div>

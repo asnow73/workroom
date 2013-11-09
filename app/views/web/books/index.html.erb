@@ -3,18 +3,21 @@
 	<div class="span10">
 	  <div class="thema-text">Хорошие книги, рекомендую почитать</div>
 
-	  <ul class="thumbnails">
-	   	<% @books.each do |book| %>
-				<li class="span5 book-desc">
-					<div class="thumbnail">
-						<table>
-							<tr>
-								<td>
+  <table class="books-desc" >
+  	<% group_books = @books.each_slice(2).to_a %>
+    <% group_books.each do |group| %>
+      <tr>
+      	<% group.each do |book| %>
+      	  <td class="border-corner" width="50%" valign="top">
+      	  	<table>
+      	  		<tr>
+      	  			<td width="220" valign="top">
 									<a href="<%= book.source_url %>">
-							      <img src="<%= book.image_url %>" alt="<%= book.name %>">
+							      <img src="<%= book.image_url %>" alt="<%= book.name %>"  width="220">
 							    </a>
-							  </td>
 							  <td>
+
+							  <td valign="top">
 								  <%= link_to book.name, book.source_url %>
 								  <p>Автор: <b><%= book.author %></b></p>
 								  <p><%= summary_for_html_text(book.description, @number_symbols_summary_description) %></p>
@@ -23,15 +26,19 @@
 								    <%= link_to book.category.name, category_books_path(book.category) %>
 								  </div>
 								</td>
-						  </tr>
-					  </table>
-					</div>
-				</li>   	
-	   	<% end %>
-	  </ul>
-	  <%= will_paginate @books %>	  
-  </div>
 
+							</tr>
+						</table>
+      	  </td>
+      	<% end %>
+      </tr>
+    <% end %>
+  </table>
+
+<%= will_paginate @group_books %>
+
+<div class="span2">
   <%= render 'web/shared/fixed_list_categories', categories: @categories, path_creator: method(:category_books_path) %>
+</div>
 
 </div>
