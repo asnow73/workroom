@@ -57,11 +57,13 @@
 			<center>
 				<h3>Хорошая книга</h3>
 				<% @books.each do |book| %>
-				  <a href="<%= book.source_url %>">
+				  <!-- <a href="<%= book.source_url %>"> -->
+				  <a href="<%= book_path(book) %>">
 					  <img src="<%= book.image_url %>" alt="<%= book.name %>">
 					</a>
 					<div class="caption">
-					  <h4><%= link_to book.name, book.source_url %></h4>
+					  <!-- <h4><%= link_to book.name, book.source_url %></h4> -->
+					  <h4><%= link_to book.name, book_path(book) %></h4>
 					  <p>Автор: <b><%= book.author %></b></p>
 					  <p><%= summary_for_html_text(book.description, @number_symbols_summary_description) %></p>
 					  <div>

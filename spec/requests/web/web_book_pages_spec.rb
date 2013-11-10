@@ -44,8 +44,8 @@ describe "Web book" do
         visit books_path
       end
 
-      it { should have_link("#{published_book.name}", href: published_book.source_url ) }
-      it { should_not have_link("#{unpublished_book.name}", href: unpublished_book.source_url ) }
+      it { should have_link("#{published_book.name}", href: book_path(published_book) ) }
+      it { should_not have_link("#{unpublished_book.name}", href: book_path(unpublished_book) ) }
     end
 
 
@@ -55,14 +55,25 @@ describe "Web book" do
       it "should list each book" do
         Book.order('created_at DESC').paginate(page: 1).each do |book|
           # page.should have_link("#{book.name}", href: book_path(book) )
-          page.should have_link("#{book.name}", href: book.source_url )
+          page.should have_link("#{book.name}", href: book_path(book) )
 
           # page.should have_content(summary_for_html_text(book.content)) TODO
           page.should have_link(book.category.name, href: category_books_path(book.category))
         end
       end
     end
-
-
   end
+
+  describe "Show book" do
+    let!(:book) { FactoryGirl.create(:book) }
+    before do
+      visit book_path(book)
+    end
+
+    it { should have_title("Web book") }
+    it { should have_selector("div", text: book.name) }
+    it { should have_content(book.description) }
+    it { should have_link("#{book.category.name}", href: books_path(books: {category_id: book.category} )) }
+    it { should have_link("Можно купить тут", href: book.source_url) }
+  end  
 end

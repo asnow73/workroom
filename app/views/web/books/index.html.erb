@@ -12,13 +12,13 @@
 	      	  	<table>
 	      	  		<tr>
 	      	  			<td width="220" valign="top">
-										<a href="<%= book.source_url %>">
+										<a href="<%= book_path(book) %>">
 								      <img src="<%= book.image_url %>" alt="<%= book.name %>"  width="220">
 								    </a>
 								  <td>
 
 								  <td valign="top">
-									  <%= link_to book.name, book.source_url %>
+									  <%= link_to book.name, book_path(book) %>
 									  <p>Автор: <b><%= book.author %></b></p>
 									  <p><%= summary_for_html_text(book.description, @number_symbols_summary_description) %></p>
 									  <div>

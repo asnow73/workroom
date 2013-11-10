@@ -13,6 +13,10 @@ class Web::BooksController < ApplicationController
     @number_symbols_summary_description = 128
   end
 
+  def show
+    @book = Book.find(params[:id])
+  end
+
   private
     def books_params
       params.permit(:category_id)
