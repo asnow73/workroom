@@ -3,10 +3,16 @@ require 'spec_helper'
 describe "Authentification" do
   subject { page }
 
-  describe "init first admin in sysstem" do
+  describe "init first admin in system" do
     describe "create first admin with email admin@admin.ru" do
       before { visit admin_signin_path }
       it { should have_selector('div.alert.alert-notice') }
+
+      it "should exist default sections" do
+        Section.find_by_name("links").should_not eq(nil)
+        Section.find_by_name("posts").should_not eq(nil)
+        Section.find_by_name("books").should_not eq(nil)
+      end
     end
 
     describe "create first admin with email admin@admin.ru" do

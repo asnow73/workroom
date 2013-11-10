@@ -20,6 +20,11 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def User.create_first_admin
+    first_admin = User.new(name: "admin", email: "admin@admin.ru", password: "admin", password_confirmation: "admin")
+    first_admin.save(validate: false)
+  end
+
   private
 
     def create_remember_token

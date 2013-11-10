@@ -34,12 +34,14 @@
 	      </tr>
 	    <% end %>
 	  </table>
+
+	  <%= will_paginate @groupb_ooks %>
 	</div>
 
 	<div class="span2">
 	  <%= render 'web/shared/fixed_list_categories', categories: @categories, path_creator: method(:category_books_path) %>
 	</div>
 
-	<%= will_paginate @groupb_ooks %>
+	
 
 </div>
