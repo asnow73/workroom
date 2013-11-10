@@ -26,7 +26,7 @@ Workroom::Application.routes.draw do
 
     resources :posts, only: [:index, :show]
     resources :links, only: [:index]
-    resources :books, only: [:index]
+    resources :books, only: [:index, :show]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
