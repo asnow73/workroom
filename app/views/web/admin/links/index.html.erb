@@ -21,6 +21,12 @@
         	<td><%= item.url %></td>
           <td><%= item.category.name %></td>
           <td><%= item.description %></td>
+          <% if item.published %>
+            <td class = "public-content"><%= item.published %></td>
+          <% else %>
+            <td class = "unpublic-content"><%= item.published %></td>
+          <% end %>
+          
         	<td class="del-edit-buttons-group">
         		<%= link_to edit_admin_link_path(item), class: 'btn btn-mini' do %>
         		  <i class = "icon-pencil"></i>

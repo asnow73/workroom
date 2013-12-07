@@ -7,7 +7,7 @@ class Web::LinksController < ApplicationController
 
   def index_category_links
     @category = Category.find_by_id(links_params[:category_id])
-    @q = @category.links.ransack params[:q]
+    @q = @category.links.where(published: true).ransack params[:q]
     @links = @q.result.order('created_at DESC').page(params[:page])
     @categories = Link.categories
   end

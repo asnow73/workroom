@@ -19,6 +19,29 @@ def clear_data
   Link.delete_all
 end
 
+# describe "not show unpublished links" do
+#   subject { page }
+
+#   before do
+#     section_links = FactoryGirl.create(:section, name: "links")
+#     @category_1 = FactoryGirl.create(:category, section: section_links)
+#     @published_link = FactoryGirl.create(:link, url: "published_link", published: true, category: @category_1)
+#     @unpublished_link = FactoryGirl.create(:link, url: "unpublished_link", published: false, category: @category_1)
+
+#     visit links_path
+#   end
+
+#   after do
+#     Section.delete_all
+#     Category.delete_all
+#     Link.delete_all
+#   end
+
+#   it { should have_link("", href: @published_link.url ) }
+#   it { should_not have_link("", href: @unpublished_link.url ) }
+# end
+
+
 describe "Web link" do
   before(:all) { prepare_data }
   after(:all) { clear_data }
@@ -44,6 +67,19 @@ describe "Web link" do
         end
       end
     end
+
+    describe "not show unpublished links" do
+      let!(:published_link) { FactoryGirl.create(:link, url: "published_link", published: true, category: @category_1) }
+      let!(:unpublished_link) { FactoryGirl.create(:link, url: "unpublished_link", published: false, category: @category_1) }
+
+      before do
+        visit links_path
+      end
+
+      it { should have_link("", href: published_link.url ) }
+      it { should_not have_link("", href: unpublished_link.url ) }
+    end
+
 
   end
 

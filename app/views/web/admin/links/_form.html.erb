@@ -3,6 +3,7 @@
 
   <%= f.input :url, label: 'URL' %>
   <%= f.association :category, collection: @categories_for_links, include_blank: false, label: 'Категория' %>
+  <%= f.input :published, label: 'Опубликованно' %>
   <%= f.input :description, as: :text, label: 'Описание', :input_html => {:class => 'input-description-field'} %>
   
   <%= f.submit submit_title, class: "btn btn-large btn-primary" %>

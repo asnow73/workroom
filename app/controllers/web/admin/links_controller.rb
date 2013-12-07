@@ -46,6 +46,6 @@ class Web::Admin::LinksController < Web::Admin::AdminApplicationController
     private
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:url, :description, :category_id)
+      params.require(:link).permit(:url, :description, :category_id, :published)
     end
 end
