@@ -29,7 +29,11 @@
           <td><%= item.category.name %></td>
           <td><%= item.description %></td>
           <td><%= item.source_url %></td>
-          <td><%= item.published %></td>
+          <% if item.published %>
+            <td class = "public-content"><%= item.published %></td>
+          <% else %>
+            <td class = "unpublic-content"><%= item.published %></td>
+          <% end %>
 
         	<td class="del-edit-buttons-group">
         		<%= link_to edit_admin_book_path(item), class: 'btn btn-mini' do %>
