@@ -22,6 +22,24 @@ describe "Admin link" do
     it { should have_selector('div', text: 'Администрирование ссылок') }
     it { should have_link('Новая ссылка...', href: new_admin_link_path) }
 
+    describe "published test" do
+      before(:all) do
+        FactoryGirl.create(:link, url: "published_link", published: true)
+        FactoryGirl.create(:link, url: "unpublished_link", published: false)
+      end
+
+      after(:all) do
+        Link.delete_all
+        Category.delete_all
+        Section.delete_all
+      end
+      it { should have_selector('td', text: "published_link") }
+      it { should have_selector('td.public-content') }
+      it { should have_selector('td', text: "unpublished_link") }
+      it { should have_selector('td.unpublic-content') }      
+    end    
+
+
     describe "pagination" do
       before(:all) do 
         32.times { FactoryGirl.create(:link) }
