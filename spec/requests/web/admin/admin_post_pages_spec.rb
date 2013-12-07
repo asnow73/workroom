@@ -15,6 +15,23 @@ describe "Admin post" do
     it { should have_selector("div", text: "Администрирование заметок") }
     it { should have_link("Новая заметка...", href: new_admin_post_path) }
 
+    describe "published test" do
+      before(:all) do
+        FactoryGirl.create(:post, title: "published_post", published: true)
+        FactoryGirl.create(:post, title: "unpublished_post", published: false)
+      end
+
+      after(:all) do
+        Post.delete_all
+        Category.delete_all
+        Section.delete_all
+      end
+      it { should have_selector('td', text: "published_post") }
+      it { should have_selector('td.public-content') }
+      it { should have_selector('td', text: "unpublished_post") }
+      it { should have_selector('td.unpublic-content') }      
+    end
+
     describe "pagination" do
       before(:all) do
         35.times { FactoryGirl.create(:post) }

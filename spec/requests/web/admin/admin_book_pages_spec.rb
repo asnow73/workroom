@@ -15,6 +15,23 @@ describe "Admin book" do
     it { should have_selector('div', text: 'Администрирование книг') }
     it { should have_link('Новая книга...', href: new_admin_book_path) }
 
+    describe "published test" do
+      before(:all) do
+        FactoryGirl.create(:book, name: "published_book", published: true)
+        FactoryGirl.create(:book, name: "unpublished_book", published: false)
+      end
+
+      after(:all) do
+        Book.delete_all
+        Category.delete_all
+        Section.delete_all
+      end
+      it { should have_selector('td', text: "published_book") }
+      it { should have_selector('td.public-content') }
+      it { should have_selector('td', text: "unpublished_book") }
+      it { should have_selector('td.unpublic-content') }      
+    end    
+
     describe "pagination" do
       before(:all) do
         32.times { FactoryGirl.create(:book) }
