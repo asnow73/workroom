@@ -8,6 +8,7 @@
 	<thead>
 		<tr>
 			<th><%= sort_link @q, :id %></th>
+      <th><%= sort_link @q, :created_at %></th>
 			<th><%= sort_link @q, :url %></th>
       <th><%= sort_link @q, :category %></th>
       <th><%= sort_link @q, :description%></th>
@@ -18,6 +19,7 @@
       <% @links.each do |item| %>
         <tr>
         	<td><%= item.id %></td>
+          <td><%= item.created_at %></td>
         	<td><%= item.url %></td>
           <td><%= item.category.name %></td>
           <td><%= item.description %></td>

@@ -8,6 +8,7 @@
 	<thead>
 		<tr>
 			<th><%= sort_link @q, :id %></th>
+      <th><%= sort_link @q, :created_at %></th>
 			<th><%= sort_link @q, :name %></th>
       <th><%= sort_link @q, :section %></th>
 			<th></th>
@@ -17,6 +18,7 @@
       <% @categories.each do |item| %>
         <tr>
         	<td><%= item.id %></td>
+          <td><%= item.created_at %></td>
         	<td><%= item.name %></td>
           <td><%= item.section.name %></td>
         	<td class="del-edit-buttons-group">
