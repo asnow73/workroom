@@ -19,7 +19,7 @@
         <tr>
         	<td><%= item.id %></td>
           <td><%= item.created_at %></td>
-        	<td><%= item.title %></td>
+        	<td><%= link_to item.title, post_path(item) %></td>
           <td><%= item.category.name %></td>
           <% if item.published %>
             <td class = "public-content"><%= item.published %></td>
