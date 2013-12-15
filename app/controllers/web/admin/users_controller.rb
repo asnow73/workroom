@@ -1,7 +1,7 @@
 class Web::Admin::UsersController < Web::Admin::AdminApplicationController
   def index
     @q = User.ransack params[:q]
-    @users = @q.result.order('created_at DESC').page(params[:page])
+    @users = @q.result.order(sort_string).page(params[:page])
   end
 
   def new

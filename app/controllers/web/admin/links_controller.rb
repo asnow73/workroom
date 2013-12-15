@@ -1,7 +1,7 @@
 class Web::Admin::LinksController < Web::Admin::AdminApplicationController
   def index
     @q = Link.ransack params[:q]
-    @links = @q.result.order('created_at DESC').page(params[:page])
+    @links = @q.result.order(sort_string).page(params[:page])
   end
 
   def new

@@ -2,7 +2,7 @@ class Web::Admin::CategoriesController < Web::Admin::AdminApplicationController
   def index
     # @categories = Category.paginate(page: params[:page])
     @q = Category.ransack params[:q]
-    @categories = @q.result.order('created_at DESC').page(params[:page])
+    @categories = @q.result.order(sort_string).page(params[:page])
     # @categories = @q.result.page(params[:page])
   end
 
