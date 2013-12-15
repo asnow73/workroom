@@ -8,6 +8,7 @@
 	<thead>
 		<tr>
 			<th><%= sort_link @q, :id %></th>
+      <th><%= sort_link @q, :created_at %></th>
 			<th><%= sort_link @q, :name %></th>
       <th><%= sort_link @q, :email %></th>
 			<th></th>
@@ -16,6 +17,7 @@
       <% @users.each do |item| %>
         <tr>
         	<td><%= item.id %></td>
+          <td><%= item.created_at %></td>
         	<td><%= item.name %></td>
           <td><%= item.email %></td>
           <td class="del-edit-buttons-group">
