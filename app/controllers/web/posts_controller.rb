@@ -1,4 +1,6 @@
 class Web::PostsController < ApplicationController
+  include Publishable
+
   def index
     if posts_params.has_key?(:category_id)
       @posts = Post.where(category_id: posts_params[:category_id], published: true)
@@ -12,6 +14,11 @@ class Web::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    if published_content?(@post)
+      @post
+    else
+      not_found
+    end
   end
 
   private

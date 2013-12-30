@@ -1,4 +1,6 @@
 class Web::BooksController < ApplicationController
+  include Publishable
+
   def index
     if books_params.has_key?(:category_id)
       @books = Book.where(category_id: books_params[:category_id], published: true)
@@ -15,6 +17,11 @@ class Web::BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    if published_content?(@book)
+      @book
+    else
+      not_found
+    end
   end
 
   private
