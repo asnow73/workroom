@@ -75,5 +75,25 @@ describe "Web book" do
     it { should have_content(book.description) }
     it { should have_link("#{book.category.name}", href: books_path(books: {category_id: book.category} )) }
     it { should have_link("Можно купить тут", href: book.source_url) }
+
+    let!(:unpublished_book) { FactoryGirl.create(:book, published: false) }
+    it "unpublished book for user" do
+      expect {
+        visit book_path(unpublished_book)
+      }.to raise_error
+    end
+
+    let!(:user_admin) { FactoryGirl.create(:user) }
+    it "unpublished book for admin" do
+      sign_in(user_admin)
+      visit book_path(unpublished_book)
+      
+      should have_title("Web book")
+      should have_selector("div", text: unpublished_book.name)
+      should have_content(unpublished_book.description)
+      should have_link("#{unpublished_book.category.name}", href: books_path(books: {category_id: unpublished_book.category} ))
+      should have_link("Можно купить тут", href: unpublished_book.source_url)
+    end
+
   end  
 end

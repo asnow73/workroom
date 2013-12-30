@@ -73,5 +73,25 @@ describe "Web post" do
     it { should have_selector("div", text: post.title) }
     it { should have_content(post.content) }
     it { should have_link("#{post.category.name}", href: posts_path(posts: {category_id: post.category} )) }
+
+
+    let!(:unpublished_post) { FactoryGirl.create(:post, published: false) }
+    it "unpublished post for user" do
+      expect {
+        visit post_path(unpublished_post)
+      }.to raise_error
+    end
+
+    let!(:user_admin) { FactoryGirl.create(:user) }
+    it "unpublished post for admin" do
+      sign_in(user_admin)
+      visit post_path(unpublished_post)
+      
+      should have_title("Web post")
+      should have_selector("div", text: unpublished_post.title)
+      should have_content(unpublished_post.content)
+      should have_link("#{unpublished_post.category.name}", href: posts_path(posts: {category_id: unpublished_post.category} ))
+    end
+
   end
 end
