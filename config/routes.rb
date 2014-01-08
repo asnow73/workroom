@@ -1,4 +1,5 @@
 Workroom::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   get "users/new"
   root 'static_pages#home'
   get "static_pages/home"

@@ -7,7 +7,7 @@
   <%= f.input :image_url, label: 'Изображение обложки (url)' %>
   <%= f.input :source_url, label: 'Ссылка на книгу (url)' %>
   <%= f.input :published, label: 'Опубликованно' %>
-  <%= f.input :description, as: :text, label: 'Описание', :input_html => {:class => 'input-description-field'} %>
+  <%= f.input :description, as: :ckeditor, label: 'Описание', :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400}} %>
 
 
   <%= f.submit submit_title, class: "btn btn-large btn-primary" %>
