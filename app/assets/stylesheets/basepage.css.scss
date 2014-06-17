@@ -1,6 +1,7 @@
-/* universal */
+/*
+// universal
 
-/* Для прижатия футера к низу страницы */
+// Для прижатия футера к низу страницы
 html, body {
     height: 100%;
     margin: 0;
@@ -17,7 +18,7 @@ html, body {
 .page-buffer {
     height: 200px;
 }
-/*---------------------------------------*/
+//---------------------------------------
 
 html {
   overflow-y: scroll;
@@ -35,18 +36,20 @@ textarea {
   resize: vertical;
 }
 
+*/
+
 .fix-position {
-    position: fixed; /* Фиксированное положение */
-    /*right: 5%; Расстояние от правого края окна браузера */
-    /*top: 20%;  Расстояние сверху */
-    /*padding: 10px;  Поля вокруг текста */ 
-    /*background: #ffe;  Цвет фона */ 
-    /*border: 1px solid #333;  Параметры рамки */ 
+    position: fixed; // Фиксированное положение
+    //right: 5%; Расстояние от правого края окна браузера
+    //top: 20%;  Расстояние сверху
+    //padding: 10px;  Поля вокруг текста
+    //background: #ffe;  Цвет фона
+    //border: 1px solid #333;  Параметры рамки
 }
 
 .center {
   text-align: center;
-  margin: auto; /* Выравниваем по центру */
+  margin: auto; // Выравниваем по центру
   h1 {
   	margin-bottom: 10px;
   }

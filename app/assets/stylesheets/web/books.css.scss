@@ -20,10 +20,10 @@
 }
 
 .border-corner {
-  border: 1px #CCCCCC solid; /* стили рамки */
-  -moz-border-radius: 10px 10px 0 0; /* закругление для старых Mozilla Firefox */
-  -webkit-border-radius: 10px 10px 0 0; /* закругл. для старых Chrome и Safari */
-  -khtml-border-radius: 10px 10px 0 0; /* закругл.для брауз.Konquerer сист. Linux */
-  border-radius: 10px 10px 10px 10px; /* закругление углов для всех, кто понимает */
+  border: 1px #CCCCCC solid; // стили рамки
+  -moz-border-radius: 10px 10px 0 0; // закругление для старых Mozilla Firefox 
+  -webkit-border-radius: 10px 10px 0 0; // закругл. для старых Chrome и Safari
+  -khtml-border-radius: 10px 10px 0 0; // закругл.для брауз.Konquerer сист. Linux
+  border-radius: 10px 10px 10px 10px; // закругление углов для всех, кто понимает
   padding: 5px;
 }
