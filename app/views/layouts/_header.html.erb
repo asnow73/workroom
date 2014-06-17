@@ -1,22 +1,28 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= link_to "Галиуллов Альберт", root_path, id: "logo" %>
-      <nav>
-        <ul class="nav pull-left">
-          <li><%= link_to "Главная",root_path %></li>
-          <li><%= link_to "Книги",   books_path %></li>
-          <li><%= link_to "Ссылки",  links_path %></li>
-          <li><%= link_to "Заметки", posts_path %></li>
-          <li><%= link_to "Резюме", static_pages_resume_path %></li>
-        </ul>
-
-        <% if signed_in? %>
-          <ul class="pull-right">
-            <li style="margin: 0px 10px 0px 0px"><%= link_to "Выйти", admin_signout_path, :class => "btn btn-primary", method: "delete" %></li>
+<header>
+  <div class="left-part">
+    <a class="logo" href="#"><img alt="" src="<%= asset_path 'logo.png' %>"></a>
+  </div>
+  <div class="right-part">
+    <div class="menu-box">
+      <ul class="menu">
+        <li><a class="active" href="index.html"><span>Home</span></a></li>
+        <li><a href="about.html"><span>About</span></a></li>
+        <li class="drop"><a href="blog.html"><span>blog</span></a>
+          <ul class="drop-down">
+            <li><a href="blog.html"><span>Blog</span></a></li>
+            <li><a href="blog-sidebar.html"><span>Blog with sidebar</span></a></li>
+            <li><a href="single-post.html"><span>Single Post</span></a></li>
           </ul>
-        <% end %>
-      </nav>
+        </li>
+        <li><a href="contact.html"><span>Contact</span></a></li>
+      </ul>       
+    </div>
+    <div class="contact-info-box">
+      <h1>Contact Info</h1>
+      <p>
+        <span><i class="fa fa-envelope-o"></i>support@convertible.com</span>
+        <span><i class="fa fa-phone"></i>1234 - 5678 - 9012</span>
+      </p>
     </div>
   </div>
 </header>

@@ -26,11 +26,10 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-# gem 'bootstrap-sass'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+#gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'will_paginate'
 gem 'faker'
-gem 'bootstrap-will_paginate'
+#gem 'bootstrap-will_paginate'
 gem 'ransack'
 gem 'simple_form', '~> 3.0.0'
 
