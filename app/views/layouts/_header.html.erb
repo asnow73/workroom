@@ -45,19 +45,18 @@
 
     </div>
 
-    <div class="contact-info-box">
-      <% if signed_in? %>
-        <ul class="pull-right">
-          <li style="margin: 0px 10px 0px 0px"><%= link_to "Выйти", admin_signout_path, :class => "btn btn-primary", method: "delete" %></li>
-        </ul>
-      <% end %>   
-      
-      <h1>Contact Info</h1>
+    <div class="contact-info-box">      
+      <h1>Для писем</h1>
       <p>
-        <span><i class="fa fa-envelope-o"></i>support@convertible.com</span>
-        <span><i class="fa fa-phone"></i>1234 - 5678 - 9012</span>
+        <span><i class="fa fa-envelope-o"></i>albertulgu@list.ru</span>
+        <!--<span><i class="fa fa-phone"></i>1234 - 5678 - 9012</span>-->
       </p>
+
+      <% if signed_in? %>
+        <p><%= link_to "Выйти", admin_signout_path, :class => "btn btn-primary", method: "delete" %></p>
+      <% end %>
     </div>
+
   </div>
 </header>
 <!-- End Header -->
