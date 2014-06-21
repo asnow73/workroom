@@ -264,7 +264,7 @@ ul li {
 }
 
 .container {
-    max-width: 1030px;
+    max-width: 1030px; //Определяет ширину контента
 }
 
 
@@ -796,7 +796,7 @@ ul.post-tags li span i {
 }
 
 .blog-content {
-    margin-left: 250px;
+    //margin-left: 250px; //Убрал отступ слева, который нужен при отображении оценок и прочего
 }
 
 .blog-content h2 {

@@ -1,13 +1,10 @@
-  <% if categories.count > 0 %>
-		<div class="fix-position category-group">
-			<div class="color-green">
-				Категории:
-			</div>
-
-			<ul class="nav nav-pills nav-stacked">
-			  <% categories.each do |category| %>
-			    <li><%= link_to category.name, path_creator.call(category) %></li>
-			  <% end %>
-		  </ul>
-		</div>
-	<% end %>
+<% if categories.count > 0 %>
+	<div class="widget category-list-widget">
+		<h2>Категории</h2>
+		<ul class="doing-list">
+			<% categories.each do |category| %>
+			  <li><%= link_to category.name, path_creator.call(category) %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

@@ -13,6 +13,7 @@ class Web::PostsController < ApplicationController
   end
 
   def show
+    @categories = Post.categories
     @post = Post.find(params[:id])
     if published_content?(@post)
       @post
