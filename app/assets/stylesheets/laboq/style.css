@@ -67,7 +67,7 @@ header {
     padding-bottom: 0;
 }
 
-a.logo {
+.logo { //было для тега a
     display: inline-block;
     margin-top: 33px;
     margin-right: 40px;

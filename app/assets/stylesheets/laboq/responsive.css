@@ -40,7 +40,7 @@
 	    text-align: center;
 	}
 
-	a.logo {
+	.logo { // было для тега a
 		margin: 30px 0;
 	}
 
