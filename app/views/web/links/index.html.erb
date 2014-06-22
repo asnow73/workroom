@@ -1,16 +1,30 @@
 <% provide(:title, 'Web links') %>
-<% group_categories = @group_links.keys.each_slice(3).to_a %>
-<% group_categories.each do |group| %>
-  <div class="row">
-  	<% group.each do |category| %>
-      <div class="<%= span_type(group, 12) %>"> <!--TODO magic number -->
-  	  	<div class="thema-text">
-          <%= category.name %>
+
+    <div id="content">
+      <div class="inner-content">
+        <div class="blog-page">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-9">
+                <div class="blog-box">
+                  <% @group_links.each do |category, links| %>
+                    <h2><%= category.name.to_s %></h2>
+                    <%= render 'web/links/links_list', links: links %>
+                    <a class="btn btn-primary" href= "<%= category_links_path(category) %>">Все ссылки &raquo;</a>
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="sidebar">
+
+                  <%= render 'web/shared/fixed_list_categories', categories: @categories, path_creator: method(:category_links_path) %>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
-  	  	<% links = @group_links[category] %>
-        <%= render 'web/shared/links/links_list', links: links %>
-  	  	<p><a class="btn btn-primary" href= "<%= category_links_path(category) %>">Все ссылки &raquo;</a></p>	
-  	  </div>
-  	<% end %>
-  </div>
-<% end %>
+      </div>
+    </div>

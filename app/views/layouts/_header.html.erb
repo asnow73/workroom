@@ -1,22 +1,62 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= link_to "Галиуллов Альберт", root_path, id: "logo" %>
-      <nav>
-        <ul class="nav pull-left">
-          <li><%= link_to "Главная",root_path %></li>
-          <li><%= link_to "Книги",   books_path %></li>
-          <li><%= link_to "Ссылки",  links_path %></li>
-          <li><%= link_to "Заметки", posts_path %></li>
-          <li><%= link_to "Резюме", static_pages_resume_path %></li>
-        </ul>
+<!-- Header
+    ================================================== -->
+<header>
+  <div class="left-part">
+    <!--<a class="logo" href="#"><img alt="" src="assets/logo.png"></a>-->
+    <img class="logo" alt="" src="<%= asset_path 'logo.png' %>"></img>
+  </div>
+  <div class="right-part">
+    <div class="menu-box">
+      <ul class="menu">
+        <li>
+          <%= link_to root_path, class: "active" do %>
+            <span>Главная</span>
+          <% end %>
+        </li>
+        <!--<li><a href="about.html"><span>About</span></a></li>-->
+        <li>
+          <%= link_to posts_path, class: "drop" do %>
+            <span>Заметки</span>
+          <% end %>
+          <!--<ul class="drop-down">
+            <li><a href="blog.html"><span>Блог</span></a></li>
+            <li><a href="blog-sidebar.html"><span>Блог с панелью выбора</span></a></li>
+            <li><a href="single-post.html"><span>Single Post</span></a></li>
+          </ul>-->
+        </li>
+        <!--<li><a href="contact.html"><span>Contact</span></a></li>-->
+        <li>
+          <%= link_to links_path do %>
+            <span>Ссылки</span>
+          <% end %>
+        </li>
 
-        <% if signed_in? %>
-          <ul class="pull-right">
-            <li style="margin: 0px 10px 0px 0px"><%= link_to "Выйти", admin_signout_path, :class => "btn btn-primary", method: "delete" %></li>
-          </ul>
-        <% end %>
-      </nav>
+        <li>
+          <%= link_to static_pages_resume_path do %>
+            <span>Резюме</span>
+          <% end %>
+        </li>
+
+        <!--<li>
+          <%= link_to books_path do %>
+            <span>Книги</span>
+          <% end %>
+        </li>-->
+      </ul>    
     </div>
+
+    <div class="contact-info-box">      
+      <h1>Для писем</h1>
+      <p>
+        <span><i class="fa fa-envelope-o"></i>albertulgu@list.ru</span>
+        <!--<span><i class="fa fa-phone"></i>1234 - 5678 - 9012</span>-->
+      </p>
+
+      <% if signed_in? %>
+        <p><%= link_to "Выйти", admin_signout_path, :class => "btn btn-primary", method: "delete" %></p>
+      <% end %>
+    </div>
+
   </div>
 </header>
+<!-- End Header -->

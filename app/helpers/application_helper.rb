@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def span_type(groups, common_number_spans)
-    "span" << (common_number_spans / groups.count).to_s
+    "col-md-" << (common_number_spans / groups.count).to_s
   end
 
   def favicon_for(url)

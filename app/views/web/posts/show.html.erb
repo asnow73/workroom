@@ -1,10 +1,228 @@
-<% provide(:title, 'Web post') %>
-<div class="thema-text">
-	<%= @post.title %>
-</div>
-<%= @post.content.html_safe %>
+		<div id="content">
+			<div class="inner-content">
+				<div class="blog-page">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-9">
+								<div class="blog-box">
 
-<div>
-  <span class="color-green">Категория: </span>
-  <%= link_to "#{@post.category.name}", posts_path(posts: {category_id: @post.category} ) %>
-</div>
+									<div class="blog-post single-post">
+										<!--<img alt="" src="upload/blog5.jpg">-->
+										<div class="postblog-content">											
+											<div class="blog-content">
+												<h2><%= @post.title %></h2>
+												<%= @post.content.html_safe %>
+												<p>
+												<div>
+													<span class="color-green">Категория: </span>
+												  <%= link_to "#{@post.category.name}", posts_path(posts: {category_id: @post.category} ) %>
+												</div>
+											  </p>
+											</div>
+											<ul class="post-tags">
+												<!--<li>
+													<p>138 likes</p>
+													<span><i class="fa fa-heart"></i></span>
+												</li>-->
+												<li>
+													<p>14 February, 2014</p>
+													<span><i class="fa fa-calendar"></i></span>
+												</li>
+												<!--<li>
+													<p><a href="#">4 Comments</a></p>
+													<span><i class="fa fa-comment"></i></span>
+												</li>-->
+											</ul>
+										</div>
+									</div>
+									
+									<!--<div class="about-autor">
+										<h2>About the author</h2>
+										
+										<ul class="nav nav-tabs" id="myTab2">
+											<li class="active"><a href="#biography" data-toggle="tab"><i class="fa fa-user"></i> <span>Biography</span></a></li>
+											<li><a href="#facebook" data-toggle="tab"><i class="fa fa-facebook"></i> <span>Facebook</span></a></li>
+											<li><a href="#twitter" data-toggle="tab"><i class="fa fa-twitter"></i> <span>Twitter</span></a></li>
+											<li><a href="#google-plus" data-toggle="tab"><i class="fa fa-google-plus"></i> <span>Google+</span></a></li>
+											<li><a href="#linkedin" data-toggle="tab"><i class="fa fa-linkedin"></i> <span>Linkedin</span></a></li>
+										</ul>
+
+										<div class="tab-content">
+											<div class="tab-pane active" id="biography">
+												<img alt="" src="upload/autor.jpg">
+												<p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  Lorem Ipsum.</p>
+												<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris</p>
+											</div>
+											<div class="tab-pane" id="facebook">
+												<p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  Lorem Ipsum.</p>
+												<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris</p>
+											</div>
+											<div class="tab-pane" id="twitter">
+												<img alt="" src="upload/autor.jpg">
+												<p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  Lorem Ipsum.</p>
+												<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris</p>
+
+											</div>
+											<div class="tab-pane" id="google-plus">
+												<img alt="" src="upload/autor.jpg">
+												<p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  Lorem Ipsum.</p>
+												<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris</p>
+												<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris</p>
+
+											</div>
+											<div class="tab-pane" id="linkedin">
+												<p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  Lorem Ipsum.</p>
+												<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris</p>
+												<p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  Lorem Ipsum.</p>
+												<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris</p>
+
+											</div>
+										</div>
+									</div>-->
+
+									<!--<div class="comment-section">
+										<h2>7 Comments</h2>
+
+										<ul class="comment-tree">
+											<li>
+												<div class="comment-box">
+													<img alt="" src="upload/avatar1.jpg">
+													<div class="comment-content">
+														<h6>ShaneFreer <span>/ 4 minutes ago</span></h6>
+														<p>great post brainartworks</p>
+													</div>
+												</div>
+												<ul class="depth">
+													<li>
+														<div class="comment-box">
+															<img alt="" src="upload/avatar2.jpg">
+															<div class="comment-content">
+																<h6>Collis Ta'eed <span>/ 12 minutes ago</span></h6>
+																<p>yeah i  really like it too, very useful!</p>
+															</div>
+														</div>
+														<ul class="depth">
+															<li>
+																<div class="comment-box">
+																	<img alt="" src="upload/avatar3.jpg">
+																	<div class="comment-content">
+																		<h6>Jremick <span>/ 20 minutes ago</span></h6>
+																		<p>i found this post very useful too, the comment form works just perfect, keep it up guys :)</p>
+																	</div>
+																</div>
+																<ul class="depth">
+																	<li>
+																		<div class="comment-box">
+																			<img alt="" src="upload/avatar4.jpg">
+																			<div class="comment-content">
+																				<h6>joshjanssen <span>/ 36 minutes ago</span></h6>
+																				<p>yep, especially when it comes to comment testing</p>
+																			</div>
+																		</div>
+																	</li>
+																</ul>
+															</li>
+
+															<li>
+																<div class="comment-box">
+																	<img alt="" src="upload/avatar5.jpg">
+																	<div class="comment-content">
+																		<h6>Stewboon <span>/ 40 minutes ago</span></h6>
+																		<p>nice job!</p>
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</li>
+
+													<li>
+														<div class="comment-box">
+															<img alt="" src="upload/avatar6.jpg">
+															<div class="comment-content">
+																<h6>bensmithett <span>/ 42 minutes ago</span></h6>
+																<p>couldn’t be better :D</p>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</li>
+
+											<li>
+												<div class="comment-box">
+													<img alt="" src="upload/avatar7.jpg">
+													<div class="comment-content">
+														<h6>justinfrench <span>/ 48 minutes ago</span></h6>
+														<p>looks very promising</p>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<form class="comment-form">
+										<h2>Leave a comment</h2>
+										<div class="text-fields">
+											<div class="float-input">
+												<input name="name" id="name" type="text" placeholder="Name">
+												<span><i class="fa fa-user"></i></span>
+											</div>
+											<div class="float-input">
+												<input name="mail" id="mail" type="text" placeholder="e-mail">
+												<span><i class="fa fa-envelope-o"></i></span>
+											</div>
+											<div class="float-input">
+												<input name="website" id="website" type="text" placeholder="website">
+												<span><i class="fa fa-link"></i></span>
+											</div>
+										</div>
+
+										<div class="submit-area">
+											<textarea name="comment" id="comment" placeholder="Message"></textarea>
+											<input type="submit" id="submit_contact" class="main-button" value="Send Now">
+										</div>
+									</form>-->
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="sidebar">
+
+									<!--<div class="search-widget widget">
+										<form>
+											<input type="search" placeholder="Search here..."/>
+											<button type="submit">
+												<i class="fa fa-search"></i>
+											</button>
+										</form>
+									</div>-->
+
+									<%= render 'web/shared/fixed_list_categories', categories: @categories, path_creator: method(:category_posts_path) %>
+
+									<!--<div class="widget tags-widget">
+										<h2>Tags</h2>
+										<ul class="tags-list">
+											<li><a href="#">web design</a></li>
+											<li><a href="#">logo</a></li>
+											<li><a href="#">php</a></li>
+											<li><a href="#">ecommerce</a></li>
+											<li><a href="#">development</a></li>
+											<li><a href="#">graphic</a></li>
+										</ul>
+									</div>
+
+									<div class="widget archives-list-widget">
+										<h2>Archives</h2>
+										<ul class="doing-list">
+											<li><a href="#">February 2014 <span>(35)</span></a></li>
+											<li><a href="#">Jannuary 2014 <span>(12)</span></a></li>
+											<li><a href="#">December 2013 <span>(46)</span></a></li>
+										</ul>
+									</div>-->
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>

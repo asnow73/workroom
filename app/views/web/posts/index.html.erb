@@ -1,18 +1,59 @@
-<% provide(:title, 'Web posts') %>
+		<div id="content">
+			<div class="inner-content">
+				<div class="blog-page">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-9">
+								<div class="blog-box">
 
-<div class="row">
-  <div class="span10">
 
-    <div class="thema-text">
-    	Заметки
-    </div>
-		<%= render 'web/shared/posts/posts_list', posts: @posts %>
-		<%= will_paginate @posts %>
+									<%= render 'web/posts/posts_list', posts: @posts %>
+									<%= will_paginate @posts %>
 
-  </div>
+									<!--<a class="older-posts" href="#">Older Posts</a>-->
+								</div>
+							</div>
 
-  <div class="span2">
-    <%= render 'web/shared/fixed_list_categories', categories: @categories, path_creator: method(:category_posts_path) %>
-  </div>
+							<div class="col-md-3">
+								<div class="sidebar">
 
-</div>
+									<!--<div class="search-widget widget">
+										<form>
+											<input type="search" placeholder="Search here..."/>
+											<button type="submit">
+												<i class="fa fa-search"></i>
+											</button>
+										</form>
+									</div>-->
+
+									<%= render 'web/shared/fixed_list_categories', categories: @categories, path_creator: method(:category_posts_path) %>
+
+									<!--<div class="widget tags-widget">
+										<h2>Tags</h2>
+										<ul class="tags-list">
+											<li><a href="#">web design</a></li>
+											<li><a href="#">logo</a></li>
+											<li><a href="#">php</a></li>
+											<li><a href="#">ecommerce</a></li>
+											<li><a href="#">development</a></li>
+											<li><a href="#">graphic</a></li>
+										</ul>
+									</div>
+
+									<div class="widget archives-list-widget">
+										<h2>Archives</h2>
+										<ul class="doing-list">
+											<li><a href="#">February 2014 <span>(35)</span></a></li>
+											<li><a href="#">Jannuary 2014 <span>(12)</span></a></li>
+											<li><a href="#">December 2013 <span>(46)</span></a></li>
+										</ul>
+									</div>-->
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>

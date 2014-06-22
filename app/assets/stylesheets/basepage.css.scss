@@ -1,52 +1,16 @@
-/* universal */
-
-/* Для прижатия футера к низу страницы */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.page-wrapper {
-    min-height: 100%;
-    margin-bottom: -200px;
-}
-* html .page-wrapper {
-    height: 100%;
-}
-.page-buffer {
-    height: 200px;
-}
-/*---------------------------------------*/
-
-html {
-  overflow-y: scroll;
-}
-
-body {
-  padding-top: 72px;
-}
-
-section {
-  overflow: auto;
-}
-
-textarea {
-  resize: vertical;
-}
 
 .fix-position {
-    position: fixed; /* Фиксированное положение */
-    /*right: 5%; Расстояние от правого края окна браузера */
-    /*top: 20%;  Расстояние сверху */
-    /*padding: 10px;  Поля вокруг текста */ 
-    /*background: #ffe;  Цвет фона */ 
-    /*border: 1px solid #333;  Параметры рамки */ 
+    position: fixed; // Фиксированное положение
+    //right: 5%; Расстояние от правого края окна браузера
+    //top: 20%;  Расстояние сверху
+    //padding: 10px;  Поля вокруг текста
+    //background: #ffe;  Цвет фона
+    //border: 1px solid #333;  Параметры рамки
 }
 
 .center {
   text-align: center;
-  margin: auto; /* Выравниваем по центру */
+  margin: auto; // Выравниваем по центру
   h1 {
   	margin-bottom: 10px;
   }
@@ -57,6 +21,7 @@ textarea {
   margin: 5px 5px 25px 0px;
 }
 
+/*
 .category-group {
   font-size: 20pt;
   margin: 50px 0px 0px 0px;
@@ -64,7 +29,7 @@ textarea {
     font-size: 14pt;
   }
 }
-
+*/
 
 .button_new_record_db {
 	margin: 0px 0px 5px 0px;
