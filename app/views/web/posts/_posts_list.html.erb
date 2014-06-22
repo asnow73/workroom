@@ -1,0 +1,34 @@
+                  <% posts.each do |post| %>
+                    <div class="blog-post">
+                      <!--<img alt="" src="upload/blog5.jpg">-->
+                      <div class="postblog-content">
+                        <!--<ul class="post-tags">
+                          <li>
+                            <p>premiumlayers</p>
+                            <span><i class="fa fa-user"></i></span>
+                          </li>
+                          <li>
+                            <p>138 likes</p>
+                            <span><i class="fa fa-heart"></i></span>
+                          </li>
+                          <li>
+                            <p>14 February, 2014</p>
+                            <span><i class="fa fa-calendar"></i></span>
+                          </li>
+                          <li>
+                            <p><a href="#">4 Comments</a></p>
+                            <span><i class="fa fa-comment"></i></span>
+                          </li>
+                        </ul>-->
+                        <div class="blog-content">
+                          <h2><%= post.title %></h2>
+                          <p>
+                            <%= summary_for_html_text(post.content) %></br>
+                            <span class="color-green">Категория: </span>
+                            <%= link_to post.category.name, category_posts_path(post.category) %>
+                          </p>
+                          <%= link_to "Читать польностью", post_path(post), class: "read-more" %>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>

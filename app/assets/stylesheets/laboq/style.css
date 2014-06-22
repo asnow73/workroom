@@ -263,7 +263,7 @@ ul li {
     -webkit-backface-visibility: hidden;
 }
 
-.container {
+.container {;
     max-width: 1030px; //Определяет ширину контента
 }
 

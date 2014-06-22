@@ -1,6 +1,6 @@
 <!-- content 
 	================================================== -->
-<div id="content">
+<!--<div id="content">
 	<div class="inner-content">
 		<div class="portfolio-container">
 		
@@ -65,3 +65,45 @@
 	</div>
 </div>
 <!-- End content -->
+
+<div id="content">
+	<div class="inner-content">
+
+    <div class="row">
+	    <div class="col-md-8">
+	      <h3>Заметки</h3>
+	      <%= render 'web/posts/posts_list', posts: @posts %>
+	      <%= link_to "Все заметки...", posts_path, class: "show-more" %>
+	    </div>
+
+			<div class="col-md-4">
+				<h3>Полезные ссылки</h3>
+				<%= render 'web/shared/links/links_list', links: @links %>
+			</div>
+
+			<!--<div class="col-md-4">
+				<center>
+					<h3>Хорошая книга</h3>
+					<% @books.each do |book| %>
+					  <a href="<%= book_path(book) %>">
+						  <img src="<%= book.image_url %>" alt="<%= book.name %>">
+						</a>
+						<div class="caption">
+						  <h4><%= link_to book.name, book_path(book) %></h4>
+						  <p>Автор: <b><%= book.author %></b></p>
+						  <p><%= summary_for_html_text(book.description, @number_symbols_summary_description) %></p>
+						  <div>
+						    <span class="color-green">Категория: </span>
+						    <%= link_to book.category.name, category_books_path(book.category) %>
+						  </div>
+						</div>
+				  <% end %>
+			  </center>
+			</div>-->
+
+		</div>
+
+  </div>
+</div>
+
+</div>
