@@ -12,7 +12,7 @@
 
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 
-  <%= stylesheet_link_tag "/assets/laboq/bootstrap.css", media: "screen" %> 
+  <!--<%= stylesheet_link_tag "/assets/laboq/bootstrap.css", media: "screen" %> 
   <%= stylesheet_link_tag "/assets/laboq/magnific-popup.css", media:"screen" %>
   <%= stylesheet_link_tag "/assets/laboq/font-awesome.css", media: "screen" %>
   <%= stylesheet_link_tag "/assets/laboq/flexslider.css", media: "screen" %>
@@ -22,10 +22,10 @@
   <%= stylesheet_link_tag "colors", media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag "basepage", media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag "image", media: "all", "data-turbolinks-track" => true %>
-  <%= stylesheet_link_tag "resume", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "resume", media: "all", "data-turbolinks-track" => true %>-->
 
 
-  <%= javascript_include_tag "/assets/laboq/jquery.min.js?body=1" %>
+  <!--<%= javascript_include_tag "/assets/laboq/jquery.min.js?body=1" %>
   <%= javascript_include_tag "/assets/laboq/jquery.migrate.js?body=1" %>
   <%= javascript_include_tag "/assets/laboq/jquery.imagesloaded.min.js?body=1" %>
   <%= javascript_include_tag "/assets/laboq/jquery.isotope.min.js?body=1" %>
@@ -41,10 +41,10 @@
   <%= javascript_include_tag "/assets/ckeditor/override.js?body=1" %>
   <%= javascript_include_tag "/assets/ckeditor/init.js?body=1" %>
   <%= javascript_include_tag "/assets/ckeditor/ckeditor.js?body=1" %>
+  <%= javascript_include_tag "application"%>-->
 
-  <!--<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>-->
-  <%= javascript_include_tag "application"%>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 
@@ -68,7 +68,7 @@
   <!-- End Container -->
 
   <div class="preloader">
-    <img alt="" src="assets/preloader.GIF">
+    <img alt="" src="<%= asset_path 'preloader.GIF' %>">
   </div>
 
 </body>

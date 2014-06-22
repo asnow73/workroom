@@ -18,6 +18,7 @@
 /*-------------------------------------------------------*/
 /* 1. Isotope filtering
 /*-------------------------------------------------------*/
+
 .isotope-item {
     z-index: 2;
 }
@@ -67,7 +68,7 @@ header {
     padding-bottom: 0;
 }
 
-.logo { //было для тега a
+.logo { /*было для тега a*/
     display: inline-block;
     margin-top: 33px;
     margin-right: 40px;
@@ -263,8 +264,8 @@ ul li {
     -webkit-backface-visibility: hidden;
 }
 
-.container {;
-    max-width: 1030px; //Определяет ширину контента
+.container {
+    max-width: 1030px;
 }
 
 
@@ -796,7 +797,7 @@ ul.post-tags li span i {
 }
 
 .blog-content {
-    //margin-left: 250px; //Убрал отступ слева, который нужен при отображении оценок и прочего
+    /*margin-left: 250px; //Убрал отступ слева, который нужен при отображении оценок и прочего*/
 }
 
 .blog-content h2 {
