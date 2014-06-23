@@ -1,5 +1,6 @@
 class Web::Admin::AdminApplicationController < ApplicationController
   # before_action :require_login
+
   before_action :signed_in_user
 
   private
