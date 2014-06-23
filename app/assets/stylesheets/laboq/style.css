@@ -235,7 +235,7 @@ body.active {
 
 #container.active {
     opacity: 1;
-}
+}*/
 
 ul {
     padding: 0;
@@ -246,7 +246,7 @@ ul li {
     list-style: none;
 }
 
-.preloader {
+/*.preloader {
     position: fixed;
     top: 50%;
     left: 50%;
