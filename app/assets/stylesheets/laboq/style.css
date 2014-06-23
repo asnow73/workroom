@@ -210,7 +210,7 @@ li.drop:hover > ul.drop-down {
 /* =  General code
 /*-------------------------------------------------*/
 
-html{
+/*html{
     height:100%;
 }
 
@@ -235,7 +235,7 @@ body.active {
 
 #container.active {
     opacity: 1;
-}
+}*/
 
 ul {
     padding: 0;
@@ -246,7 +246,7 @@ ul li {
     list-style: none;
 }
 
-.preloader {
+/*.preloader {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -267,7 +267,7 @@ ul li {
 
 .container {
     max-width: 1030px;
-}
+}*/
 
 
 /*-------------------------------------------------*/
