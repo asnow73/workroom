@@ -1,14 +1,23 @@
-<%= simple_form_for(@book, url: admin_book_path(@book), defaults: { input_html: { class: 'input-simple-field' } }  ) do |f| %>
+<%= simple_form_for @book, url: admin_book_path(@book),
+  wrapper_mappings: {
+    check_boxes: :vertical_radio_and_checkboxes,
+    boolean: :vertical_boolean
+  } do |f| %>
+  <%= f.error_notification %>
+  
   <%= render 'shared/error_messages', object: f.object %>
-
+  
   <%= f.input :name, label: 'Название' %>
   <%= f.input :author, label: 'Автор' %>
+
   <%= f.association :category, collection: @categories_for_books, include_blank: false, label: 'Категория' %>
+
   <%= f.input :image_url, label: 'Изображение обложки (url)' %>
   <%= f.input :source_url, label: 'Ссылка на книгу (url)' %>
-  <%= f.input :published, label: 'Опубликованно' %>
+
+  <%= f.input :published, label: 'Состояние публикации', as: :check_boxes, collection: ["Опубликованно"] %>
+
   <%= f.input :description, as: :ckeditor, label: 'Описание', :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400}} %>
 
-
-  <%= f.submit submit_title, class: "btn btn-large btn-primary" %>
+  <%= f.submit submit_title, class: "btn btn-large btn-primary"  %> 
 <% end %>

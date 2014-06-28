@@ -1,4 +1,10 @@
-<%= simple_form_for(@user, url: admin_user_path(@user), defaults: { input_html: { class: 'input-simple-field' } }  ) do |f| %>
+<%= simple_form_for @user, url: admin_user_path(@user),
+  wrapper_mappings: {
+    check_boxes: :vertical_radio_and_checkboxes,
+    boolean: :vertical_boolean
+  } do |f| %>
+  <%= f.error_notification %>
+  
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.input :name, label: 'Имя' %>
@@ -6,5 +12,5 @@
   <%= f.input :password, label: 'Пароль' %>
   <%= f.input :password_confirmation, label: 'Подтверждение пароля' %>
 
-  <%= f.submit submit_title, class: "btn btn-large btn-primary" %>
+  <%= f.submit submit_title, class: "btn btn-large btn-primary"  %> 
 <% end %>
