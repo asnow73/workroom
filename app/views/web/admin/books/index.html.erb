@@ -37,15 +37,18 @@
             <td class = "unpublic-content"><%= item.published %></td>
           <% end %>
 
-        	<td class="del-edit-buttons-group">
-        		<%= link_to edit_admin_book_path(item), class: 'btn btn-mini' do %>
-        		  <i class = "icon-pencil"></i>
-        		<% end %>
+        	<td>
+            <div class="btn-group">
+              <%= link_to edit_admin_book_path(item), class: 'btn btn-success btn-sm' do %>
+                Изм.
+              <% end %>
 
-						<%= link_to admin_book_path(item), method: :delete, data: { confirm: "Вы уверены?" }, class: 'btn btn-mini btn-danger' do %>
-              <i class = "icon-trash"></i>
-						<% end %>
+              <%= link_to admin_book_path(item), method: :delete, data: { confirm: "Вы уверены?" }, class: 'btn btn-danger btn-sm' do %>
+                Удал.
+              <% end %>
+            </div>
         	</td>
+
         </tr>
       <% end %>
     </tbody>

@@ -3,7 +3,7 @@ class Web::Admin::SessionsController < ApplicationController
     if User.count == 0
       User.create_first_admin
       Section.create_default_sections
-      flash[:notice] = 'Был создан пользователь с email = admin@admin.ru и паролем = "admin". Для безопасности рекомендуется изменить email/пароль пользователя "admin"'
+      flash[:info] = 'Был создан пользователь с email = admin@admin.ru и паролем = "admin". Для безопасности рекомендуется изменить email/пароль пользователя "admin"'
     end
 
     @title = "Sign in"
@@ -15,7 +15,7 @@ class Web::Admin::SessionsController < ApplicationController
       sign_in user
       redirect_back_or admin_root_path
     else
-      flash.now[:error] = 'Неверный e-mail или пароль'
+      flash.now[:warning] = 'Неверный e-mail или пароль'
       render 'new'
     end    
   end

@@ -23,7 +23,7 @@ module Web::Admin::SessionsHelper
   def signed_in_user
     if signed_in? == false
       store_location
-      flash[:notice] = "Пожалуйста авторизуйтесь."
+      flash[:warning] = "Пожалуйста авторизуйтесь."
       redirect_to admin_signin_path
     end
   end

@@ -1,8 +1,14 @@
-<%= simple_form_for(@category, url: admin_category_path(@category), defaults: { input_html: { class: 'input-simple-field' } }  ) do |f| %>
+<%= simple_form_for @category, url: admin_category_path(@category),
+  wrapper_mappings: {
+    check_boxes: :vertical_radio_and_checkboxes,
+    boolean: :vertical_boolean
+  } do |f| %>
+  <%= f.error_notification %>
+  
   <%= render 'shared/error_messages', object: f.object %>
-
+  
   <%= f.input :name, label: "Название" %>
   <%= f.association :section, include_blank: false, label: "Раздел" %>
 
-  <%= f.submit submit_title, class: "btn btn-large btn-primary" %>
+  <%= f.submit submit_title, class: "btn btn-large btn-primary"  %> 
 <% end %>

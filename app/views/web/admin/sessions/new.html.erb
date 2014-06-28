@@ -2,12 +2,20 @@
 
 <div class="center">
 	<div class="thema-text">Вход в административную панель</div>
-  <%= simple_form_for(:session, url: admin_sessions_path) do |f| %>
 
-    <%= f.input :email, label: 'e-mail' %>
-    <%= f.input :password, label: 'Пароль' %>
+	  <%= simple_form_for :session, url: admin_sessions_path,
+	  wrapper_mappings: {
+	    check_boxes: :vertical_radio_and_checkboxes,
+	    boolean: :vertical_boolean
+	  } do |f| %>
+		  <%= f.error_notification %>
+		  
 
-    <%= f.submit "Войти", class: "btn btn-large btn-primary" %>
-  <% end %>
+		  <%= f.input :email, placeholder: 'Введите email' %>
+		  <%= f.input :password, placeholder: 'Введите пароль' %>  
+
+		  <%= f.submit "Войти", class: "btn btn-large btn-primary"  %> 
+		<% end %>
+
 
 </div>
