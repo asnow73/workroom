@@ -50,7 +50,7 @@ describe "Admin user" do
 
     it "should not delete current user" do
       expect { click_link('', href: admin_user_path(user_admin)) }.to_not change(User, :count)
-      page.should have_selector('div.alert.alert-error')
+      page.should have_selector('div.alert.alert-danger')
     end
   end
 

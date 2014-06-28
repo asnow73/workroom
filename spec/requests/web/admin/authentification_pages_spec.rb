@@ -6,7 +6,7 @@ describe "Authentification" do
   describe "init first admin in system" do
     describe "create first admin with email admin@admin.ru" do
       before { visit admin_signin_path }
-      it { should have_selector('div.alert.alert-notice') }
+      it { should have_selector('div.alert.alert-warning') }
 
       it "should exist default sections" do
         Section.find_by_name("links").should_not eq(nil)
@@ -20,7 +20,7 @@ describe "Authentification" do
       before do
        visit admin_signin_path
       end
-      it { should_not have_selector('div.alert.alert-notice') }
+      it { should_not have_selector('div.alert.alert-warning') }
     end
   end
 
@@ -37,11 +37,11 @@ describe "Authentification" do
         fill_in "Пароль", with: "wrongpassword"
         click_button "Войти"
       end
-      it { should have_selector('div.alert.alert-error') }
+      it { should have_selector('div.alert.alert-warning') }
 
       describe "after visiting another page" do
         before { click_link "Главная" }
-        it { should_not have_selector('div.alert.alert-error') }
+        it { should_not have_selector('div.alert.alert-warning') }
       end
     end
 

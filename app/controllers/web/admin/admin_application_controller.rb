@@ -15,7 +15,7 @@ class Web::Admin::AdminApplicationController < ApplicationController
   # private
   #   def require_login
   #     if !signed_in?
-  #       # flash[:error] = "Вы должны подтвердить права администратора"
+  #       # flash[:warning] = "Вы должны подтвердить права администратора"
   #       redirect_to admin_signin_path
   #     end
   #   end

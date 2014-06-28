@@ -1,6 +1,6 @@
 <% provide(:title, 'Web books') %>
 <div class="row">
-	<div class="span10">
+	<div class="col-md-10">
 	  <div class="thema-text">Хорошие книги, рекомендую почитать</div>
 
 	  <table class="books-desc" >
@@ -38,7 +38,7 @@
 	  <%= will_paginate @groupb_ooks %>
 	</div>
 
-	<div class="span2">
+	<div class="col-md-2">
 	  <%= render 'web/shared/fixed_list_categories', categories: @categories, path_creator: method(:category_books_path) %>
 	</div>
 

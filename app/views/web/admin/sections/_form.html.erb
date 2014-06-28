@@ -1,5 +1,13 @@
-<%= simple_form_for(@section, url: admin_section_path(@section), defaults: { input_html: { class: 'input-simple-field' } }  ) do |f| %>
-  <%= render "shared/error_messages", object: f.object %>
+<%= simple_form_for @section, url: admin_section_path(@section),
+  wrapper_mappings: {
+    check_boxes: :vertical_radio_and_checkboxes,
+    boolean: :vertical_boolean
+  } do |f| %>
+  <%= f.error_notification %>
+  
+  <%= render 'shared/error_messages', object: f.object %>
+  
   <%= f.input :name, label: "Название" %>
-  <%= f.submit submit_title, class: "btn btn-large btn-primary" %>
+
+  <%= f.submit submit_title, class: "btn btn-large btn-primary"  %> 
 <% end %>
