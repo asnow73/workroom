@@ -15,7 +15,7 @@
   <%= f.input :image_url, label: 'Изображение обложки (url)' %>
   <%= f.input :source_url, label: 'Ссылка на книгу (url)' %>
 
-  <%= f.input :published, label: 'Состояние публикации', as: :check_boxes, collection: ["Опубликованно"] %>
+  <%= f.input :published, label: 'Состояние публикации', as: :boolean %>
 
   <%= f.input :description, as: :ckeditor, label: 'Описание', :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400}} %>
 

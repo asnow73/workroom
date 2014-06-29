@@ -10,7 +10,7 @@
   <%= f.input :url, label: 'URL' %>
   <%= f.association :category, collection: @categories_for_links, include_blank: false, label: 'Категория' %>
 
-  <%= f.input :published, label: 'Состояние публикации', as: :check_boxes, collection: ["Опубликованно"] %>
+  <%= f.input :published, label: 'Состояние публикации', as: :boolean %>
 
   <%= f.input :description, as: :ckeditor, label: 'Описание', :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400}} %>
 
