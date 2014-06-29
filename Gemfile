@@ -5,7 +5,7 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 
 gem 'ckeditor'
-gem "non-stupid-digest-assets" #для решения проблемы с отображением ckeditor на heroku
+#gem "non-stupid-digest-assets" #для решения проблемы с отображением ckeditor на heroku
 gem 'carrierwave'
 gem 'mini_magick'
 
@@ -33,8 +33,8 @@ gem 'will_paginate'
 gem 'faker'
 #gem 'bootstrap-will_paginate'
 gem 'ransack'
-#gem 'simple_form', '~> 3.0.0'
-gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
+gem 'simple_form', '~> 3.0.0'
+#gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
