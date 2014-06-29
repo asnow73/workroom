@@ -1,4 +1,4 @@
-<%= simple_form_for @post, url: admin_post_path(@post),
+<!--<%= simple_form_for @post, url: admin_post_path(@post),
 	wrapper_mappings: {
     check_boxes: :vertical_radio_and_checkboxes,
     boolean: :vertical_boolean
@@ -15,10 +15,9 @@
   <%= f.input :content, as: :ckeditor, label: 'Содержимое', :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400}} %>
 
   <%= f.submit submit_title, class: "btn btn-large btn-primary"  %> 
-<% end %>
+<% end %>-->
 
-<!--
-<%= simple_form_for(@post, url: admin_post_path(@post) ) do |f| %>
+<%= simple_form_for(@post, url: admin_post_path(@post), defaults: { input_html: { class: 'input-simple-field' } } ) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.input :title, label: 'Заглавие' %>
@@ -29,4 +28,3 @@
 
   <%= f.submit submit_title, class: "btn btn-large btn-primary" %>
 <% end %>
--->
