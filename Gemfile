@@ -5,7 +5,6 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 
 gem 'ckeditor'
-#gem "non-stupid-digest-assets" #для решения проблемы с отображением ckeditor на heroku
 gem 'carrierwave'
 gem 'mini_magick'
 
