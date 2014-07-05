@@ -1,0 +1,20 @@
+toolbar:
+  - newdocument | undo redo | cut copy paste nonbreaking | ltr rtl | link image charmap table media | fullscreen preview visualblocks visualchars | code
+  - bold italic underline strikethrough alignleft aligncenter alignright alignjustify | forecolor backcolor | styleselect formatselect fontselect fontsizeselect | bullist numlist | outdent indent | removeformat subscript superscript
+plugins:
+  - table
+  - fullscreen
+  - code
+  - link
+  - image
+  - charmap
+  - paste
+  - print
+  - preview
+  - visualblocks
+  - visualchars
+  - media
+  - nonbreaking
+  - save
+  - directionality
+  - textcolor

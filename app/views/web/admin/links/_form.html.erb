@@ -10,9 +10,10 @@
   <%= f.input :url, label: 'URL' %>
   <%= f.association :category, collection: @categories_for_links, include_blank: false, label: 'Категория' %>
 
-  <%= f.input :published, label: 'Состояние публикации', as: :boolean %>
+  <%= f.input :published, label: 'Опубликованно', as: :boolean %>
 
-  <%= f.input :description, as: :ckeditor, label: 'Описание', :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400}} %>
+  <%= f.text_area :content, :class => "tinymce", :rows => 40, :cols => 120 %>
+  <%= tinymce :content_css => asset_path('application.css') %>
 
   <%= f.submit submit_title, class: "btn btn-large btn-primary"  %> 
 <% end %>
