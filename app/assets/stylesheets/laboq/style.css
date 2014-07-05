@@ -366,7 +366,8 @@ ul li {
 }
 
 .content-box p {
-    color: #7a7a7a;
+    /*color: #7a7a7a;*/
+    color: #444444;
     font-size: 13px;
     font-family: Courier New;
     margin: 0;
@@ -811,7 +812,8 @@ ul.post-tags li span i {
 }
 
 .blog-content p {
-    color: #7a7a7a;
+    /*color: #7a7a7a;*/
+    color: #444444;
     font-size: 16px;
     font-family: Courier New;
     line-height: 23px;

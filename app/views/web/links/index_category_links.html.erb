@@ -2,36 +2,39 @@
 
     <div id="content">
       <div class="inner-content">
-        <div class="row">
-          <div class="col-md-9">
-            <div class="thema-text">
-              <%= @category.name %>
-            </div>
-            <% pairs_links = @links.each_slice(2).to_a %>
-            <% pairs_links.each do |pair| %>
-              <!--<div class="row">-->
-              	<div class="media">
-              		<% pair.each do |link| %>
-              		  <div class="<%= span_type(pair, 12) %>">
-        					    <div class="media-body media-body-interval">
-        					      <h4 class="media-heading">
-                          <img height="16" width="16" src="http://www.google.com/s2/favicons?domain=<%= link.url %>" />
-                          <%= link_to "#{link.url}", url_for(link.url) %>
-                        </h4>
-        					      <%= link.description.html_safe %>
-        					    </div>
-        				    </div>
-              		<% end %>
-              	</div>
-              
-            <% end %>
-        		<%= will_paginate @links %>
-          </div>
+        <div class="blog-page">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-9">
+                <div class="blog-box">
+                  <h2><%= @category.name.to_s %></h2>
+                  <% pairs_links = @links.each_slice(2).to_a %>
+                  <% pairs_links.each do |pair| %>
+                    <div class="row">
+                      <% pair.each do |link| %>
+                        <div class="<%= span_type(pair, 12) %>">
+                          <div class="link-desc">
+                            <img height="16" width="16" src="http://www.google.com/s2/favicons?domain=<%= link.url %>" />
+                            <%= link_to "#{link.url}", url_for(link.url) %>
+                            <%= link.description.html_safe %>
+                          </div>
+                        </div>
+                      <% end %>
+                    </div>
+                    
+                  <% end %>
+                  <%= will_paginate @links %>
 
-          <div class="col-md-3">
-            <div class="sidebar">
+                </div>
+              </div>
 
-              <%= render 'web/shared/fixed_list_categories', categories: @categories, path_creator: method(:category_links_path) %>
+              <div class="col-md-3">
+                <div class="sidebar">
+
+                  <%= render 'web/shared/fixed_list_categories', categories: @categories, path_creator: method(:category_links_path) %>
+
+                </div>
+              </div>
 
             </div>
           </div>
