@@ -4,7 +4,9 @@ ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-gem 'ckeditor'
+#gem 'ckeditor'
+#gem 'bootstrap-wysihtml5-rails', :git => 'git://github.com/Nerian/bootstrap-wysihtml5-rails.git'
+gem 'tinymce-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 

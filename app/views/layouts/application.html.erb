@@ -37,26 +37,17 @@
   <%= javascript_include_tag "/assets/jquery.js?body=1" %>
   <%= javascript_include_tag "/assets/jquery_ujs.js?body=1" %>
   <%= javascript_include_tag "/assets/turbolinks.js?body=1" %>
-  <%= javascript_include_tag "/assets/ckeditor/config.js?body=1" %>
-  <%= javascript_include_tag "/assets/ckeditor/override.js?body=1" %>
-  <%= javascript_include_tag "/assets/ckeditor/init.js?body=1" %>
-  <%= javascript_include_tag "/assets/ckeditor/ckeditor.js?body=1" %>
   <%= javascript_include_tag "application"%>-->
 
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  
-  <!--<%= javascript_include_tag "/assets/ckeditor/config.js?body=1" %>-->
-  <%= javascript_include_tag "/assets/ckeditor/override.js?body=1" %>
-  <%= javascript_include_tag "/assets/ckeditor/init.js?body=1" %>
-  <%= javascript_include_tag "/assets/ckeditor/ckeditor.js?body=1" %>
+  <%= tinymce_assets %>
 
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 
 </head>
 <body>
-
   <!-- Container -->
   <div id="container">
     <%= render 'layouts/header' %>
@@ -75,5 +66,14 @@
 		<img alt="" src="<%= asset_path 'preloader.GIF' %>">
 	</div>
 -->
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+      $('.wysihtml5').each(function(i, elem) {
+        $(elem).wysihtml5();
+      });
+
+    })
+  </script>
 </body>
 </html>
