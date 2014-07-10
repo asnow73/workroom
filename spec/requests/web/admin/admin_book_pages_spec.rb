@@ -11,7 +11,7 @@ describe "Admin book" do
       visit admin_books_path
     end
 
-    it { should have_title('Admin book') }
+    #it { should have_title('Admin book') }
     it { should have_selector('div', text: 'Администрирование книг') }
     it { should have_link('Новая книга...', href: new_admin_book_path) }
 
@@ -46,9 +46,9 @@ describe "Admin book" do
 
       it "should list each book" do
         Book.order('created_at DESC').paginate(page: 1).each do |book|
-          page.should have_selector('td', text: book.name)
-          page.should have_link('', href: edit_admin_book_path(book))
-          page.should have_link('', href: admin_book_path(book))
+          should have_selector('td', text: book.name)
+          should have_link('', href: edit_admin_book_path(book))
+          should have_link('', href: admin_book_path(book))
         end
       end
     end
@@ -62,7 +62,7 @@ describe "Admin book" do
 
     it "should delete book" do
       expect { click_link('', href: admin_book_path(book_for_delete)) }.to change(Book, :count).by(-1)
-      page.should have_selector('div.alert.alert-success')
+      should have_selector('div.alert.alert-success')
     end
   end 
 
@@ -77,7 +77,7 @@ describe "Admin book" do
       visit edit_admin_book_path(book)
     end
 
-    it { should have_title('Admin book update') }
+    #it { should have_title('Admin book update') }
     it { should have_selector('div', text: 'Обновление книги') }
     it { should have_button('Сохранить изменения') }
     it { find_field('book_category_id').value.should eq book.category.id.to_s }
@@ -122,7 +122,7 @@ describe "Admin book" do
       visit new_admin_book_path
     end
 
-    it { should have_title('Admin book create') }
+    #it { should have_title('Admin book create') }
     it { should have_selector('div', text: 'Создание новой книги') }
     it { should have_button('Создать книгу') }
     it { find_field('book_category_id').value.should eq category_books.id.to_s }
@@ -136,10 +136,23 @@ describe "Admin book" do
       it { should have_content('error') }
     end
 
-    describe "with valid information" do
+    describe "with valid information", :js => true  do
       before do
         fill_in "Название", with: "new name"
-        fill_in "Описание", with: "desc"
+        # fill_in :description, with: "desc"
+# page.execute_script('$("#Описание").tinymce().setContent("desc")')
+
+# browser = session.driver.browser
+# browser.switch_to.frame('tinymce')
+# editor = page.find_by_id('tinymce')
+#   editor.native.send_keys 'desc'
+# browser.switch_to.default_content
+
+browser = page.driver.browser
+browser.switch_to('tinymce')
+editor = page.find_by_id('tinymce').node
+editor.send_keys("testing testing")
+
         select category_books.name, :from => "Категория"
         expect { click_button "Создать книгу" }.to change(Book, :count).by(1)
       end
