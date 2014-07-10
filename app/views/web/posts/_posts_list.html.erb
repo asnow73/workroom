@@ -21,7 +21,8 @@
                           </li>
                         </ul>-->
                         <div class="blog-content">
-                          <h2><%= post.title %></h2>
+                          <!--<h2><%= post.title %></h2>-->
+                          <h2><%= link_to post.title, post_path(post) %></h2>
                           <p>
                             <%= summary_for_html_text(post.content) %></br>
                             <span class="color-green">Категория: </span>

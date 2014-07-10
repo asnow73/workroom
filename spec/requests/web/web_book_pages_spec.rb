@@ -28,12 +28,12 @@ describe "Web book" do
       visit books_path
     end
 
-    it { should have_title("Web books") }
+    # it { should have_title("Web books") }
     # it { should have_selector("h2", text: "Книги") }
 
     it "category books" do
       Book.categories.each do |category|
-        page.should have_link(category.name, href: category_books_path(category))
+        should have_link(category.name, href: category_books_path(category))
       end
     end
 
@@ -50,15 +50,13 @@ describe "Web book" do
 
 
     describe "pagination" do
-      it { page.should have_selector('div.pagination') }
+      it { should have_selector('div.pagination') }
 
       it "should list each book" do
         Book.order('created_at DESC').paginate(page: 1).each do |book|
-          # page.should have_link("#{book.name}", href: book_path(book) )
-          page.should have_link("#{book.name}", href: book_path(book) )
-
-          # page.should have_content(summary_for_html_text(book.content)) TODO
-          page.should have_link(book.category.name, href: category_books_path(book.category))
+          should have_link("#{book.name}", href: book_path(book) )
+          # should have_content(summary_for_html_text(book.content)) TODO
+          should have_link(book.category.name, href: category_books_path(book.category))
         end
       end
     end

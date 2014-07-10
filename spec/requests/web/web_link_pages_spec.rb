@@ -35,11 +35,11 @@ describe "Web link" do
     describe "group links" do
       it "should have all categories title and links" do
         Link.groups_links(10).each do |category, links|
-          page.should have_selector("div", text: category.name)
+          should have_selector("div", text: category.name)
           links.each do |link|
-            page.should have_link("", href: link.url)
-            page.should have_content(link.description)
-            page.should have_link("Все ссылки", href: category_links_path(category))
+            should have_link("", href: link.url)
+            should have_content(link.description)
+            should have_link("Все ссылки", href: category_links_path(category))
           end
         end
       end
@@ -57,7 +57,6 @@ describe "Web link" do
       it { should_not have_link("", href: unpublished_link.url ) }
     end
 
-
   end
 
   describe "index category links" do
@@ -71,14 +70,14 @@ describe "Web link" do
 
     it "category links" do
       Link.categories.each do |category|
-        page.should have_link(category.name, href: category_links_path(category))
+        should have_link(category.name, href: category_links_path(category))
       end
     end
 
     it "should list each link" do
       @category_1.links.order('created_at DESC').paginate(page: 1).each do |link|
-        page.should have_link("#{link.url}", href: link.url )
-        # page.should have_content(summary_for_html_text(link.description)) TODO        
+        should have_link("#{link.url}", href: link.url )
+        # should have_content(summary_for_html_text(link.description)) TODO        
       end
     end
 

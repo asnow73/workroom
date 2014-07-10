@@ -31,11 +31,11 @@ describe "Web post" do
       visit posts_path
     end
 
-    it { should have_title("Web posts") }
+    #it { should have_title("Web posts") }
     it { should have_selector("div", text: "Заметки") }
     it "category posts" do
       Post.categories.each do |category|
-        page.should have_link(category.name, href: category_posts_path(category))
+        should have_link(category.name, href: category_posts_path(category))
       end
     end
 
@@ -55,9 +55,9 @@ describe "Web post" do
 
       it "should list each post" do
         Post.order('created_at DESC').paginate(page: 1).each do |post|
-          page.should have_link("#{post.title}", href: post_path(post) )
-          # page.should have_content(summary_for_html_text(post.content)) TODO
-          page.should have_link(post.category.name, href: category_posts_path(post.category))
+          should have_link("#{post.title}", href: post_path(post) )
+          # should have_content(summary_for_html_text(post.content)) TODO
+          should have_link(post.category.name, href: category_posts_path(post.category))
         end
       end
     end
@@ -69,7 +69,7 @@ describe "Web post" do
       visit post_path(post)
     end
 
-    it { should have_title("Web post") }
+    #it { should have_title("Web post") }
     it { should have_selector("div", text: post.title) }
     it { should have_content(post.content) }
     it { should have_link("#{post.category.name}", href: posts_path(posts: {category_id: post.category} )) }
@@ -87,7 +87,7 @@ describe "Web post" do
       sign_in(user_admin)
       visit post_path(unpublished_post)
       
-      should have_title("Web post")
+      # should have_title("Web post")
       should have_selector("div", text: unpublished_post.title)
       should have_content(unpublished_post.content)
       should have_link("#{unpublished_post.category.name}", href: posts_path(posts: {category_id: unpublished_post.category} ))
