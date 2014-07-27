@@ -66,7 +66,9 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'selenium-webdriver'
+  # gem 'selenium-webdriver'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
 end
 
 group :production do
