@@ -15,7 +15,7 @@ module ApplicationHelper
   def summary_for_html_text(text, length = 255)
     return '' if text.blank?
     #truncate( sanitize(text, :tags => []), :length => length ).gsub(/\r/, "").gsub(/\n/, "").gsub(/&[a-z]{0-5}\.\.\.$/, "...").html_safe
-    Sanitize.fragment(text, :elements => ['b', 'br', 'p', 'ul', 'ol', 'li', 'p', 'strong']).slice(0, length).concat("...").html_safe
+    Sanitize.fragment(text, :elements => ['b', 'br', 'p', 'li', 'p', 'strong', 'i']).slice(0, length).concat("...").html_safe
     #truncate( Sanitize.fragment(text, Sanitize::Config::RELAXED), :length => length ).gsub(/\n/, "").gsub(/&[a-z]{0-5}\.\.\.$/, "...").html_safe
     #Sanitize.fragment(text.strip, Sanitize::Config::RELAXED).slice(0, length).html_safe
   end
