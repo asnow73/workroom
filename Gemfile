@@ -10,6 +10,8 @@ gem 'tinymce-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'sanitize' #для очистки текста от html тегов
+
 # Use sqlite3 as the database for Active Record
 group :development, :test do
   gem 'sqlite3'
