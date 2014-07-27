@@ -136,7 +136,7 @@ describe "Admin book" do
       it { should have_content('error') }
     end
 
-    describe "with valid information", :js => true  do
+    describe "with valid information", :js => true do
       before do
         fill_in "Название", with: "new name"
         # fill_in :description, with: "desc"
@@ -148,11 +148,10 @@ describe "Admin book" do
 #   editor.native.send_keys 'desc'
 # browser.switch_to.default_content
 
-browser = page.driver.browser
-browser.switch_to('tinymce')
-editor = page.find_by_id('tinymce').node
-editor.send_keys("testing testing")
-
+within_frame "tinymce" do
+  editor = page.find_by_id("tinymce")
+  editor.native.send_keys "some text"
+end
         select category_books.name, :from => "Категория"
         expect { click_button "Создать книгу" }.to change(Book, :count).by(1)
       end
