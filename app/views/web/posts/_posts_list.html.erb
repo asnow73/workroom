@@ -20,11 +20,12 @@
                             <span><i class="fa fa-comment"></i></span>
                           </li>
                         </ul>-->
+
                         <div class="blog-content">
                           <!--<h2><%= post.title %></h2>-->
                           <h2><%= link_to post.title, post_path(post) %></h2>
                           <p>
-                            <%= summary_for_html_text(post.content) %></br>
+                            <div><%= summary_for_html_text(post.content) %></div></br>
                             <span class="color-green">Категория: </span>
                             <%= link_to post.category.name, category_posts_path(post.category) %>
                           </p>
