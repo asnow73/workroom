@@ -9,7 +9,6 @@ describe Category do
 
   it { should respond_to(:name) }
   it { should respond_to(:links) }
-  it { should respond_to(:books) }
   it { should respond_to(:posts) }
   it { should respond_to(:section) }
   it { should be_valid }
@@ -55,18 +54,6 @@ describe Category do
         links.should_not be_empty
         links.each do |link|
           Link.find_by_id(link.id).should be_nil
-        end
-      end
-    end
-
-    describe "with book" do
-      let!(:book) { FactoryGirl.create(:book, category: category) }
-      it "should destroy associated books" do
-        books = category.books.to_a
-        category.destroy
-        books.should_not be_empty
-        books.each do |book|
-          Book.find_by_id(book.id).should be_nil
         end
       end
     end

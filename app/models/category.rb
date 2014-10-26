@@ -1,7 +1,6 @@
 class Category < ActiveRecord::Base
   belongs_to :section
   has_many :links, dependent: :destroy
-  has_many :books, dependent: :destroy
   has_many :posts, dependent: :destroy
 
   before_save { |category| category.name = name.downcase }
