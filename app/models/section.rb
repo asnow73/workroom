@@ -9,10 +9,6 @@ class Section < ActiveRecord::Base
       Section.create(name: "links")
     end
 
-    unless Section.find_by_name("books")
-      Section.create(name: "books")
-    end
-
     unless Section.find_by_name("posts")
       Section.create(name: "posts")
     end

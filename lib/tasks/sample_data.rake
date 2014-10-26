@@ -4,7 +4,6 @@ namespace :db do
     make_sections
     make_categories
     make_links
-    make_books
     make_posts
     # make_users
   end
@@ -16,7 +15,6 @@ def make_sections
     Section.create!(name: name)
   end
   @section_links = Section.create!(name: "links")
-  @section_books = Section.create!(name: "books")
   @section_posts = Section.create!(name: "posts")
 end
 
@@ -30,10 +28,6 @@ def make_categories
   @section_links.categories.create!(name: "study")
   @section_links.categories.create!(name: "work")
 
-  # section_books = Section.find_by_name("books")
-  @section_books.categories.create!(name: "programming")
-  @section_books.categories.create!(name: "workflow")
-
   @section_posts.categories.create!(name: "adventure")
   @section_posts.categories.create!(name: "fantastic")
 end
@@ -45,18 +39,6 @@ def make_links
     url = "url_#{n+1}"
     description = Faker::Lorem.sentence(5)
     categories.each { |category| category.links.create!(url: url, description: description) }  
-  end
-end
-
-def make_books
-  # categories = Category.all(limit: 6)
-  categories = Category.where(section_id: @section_books)
-  35.times do |n|
-    name = "name_#{n+1}"
-    description = Faker::Lorem.sentence(5)
-    image_url = 'http://static.ozone.ru/multimedia/books_covers/c200/1001969331.jpg'
-    source_url = 'http://www.ozon.ru/context/detail/id/5508646/'
-    categories.each { |category| category.books.create!(name: name, description: description, image_url: image_url, source_url: source_url) }  
   end
 end
 

@@ -10,7 +10,6 @@ Workroom::Application.routes.draw do
       resources :categories
       resources :links
       resources :sections
-      resources :books
       resources :posts
       resources :users
       resources :sessions, only: [:new, :create, :destroy]
@@ -21,12 +20,10 @@ Workroom::Application.routes.draw do
     resources :category, only: [] do
       resources :posts, only: [:index]
       resources :links, only: [:index], action: "index_category_links"
-      resources :books, only: [:index]
     end
 
     resources :posts, only: [:index, :show]
     resources :links, only: [:index]
-    resources :books, only: [:index, :show]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
