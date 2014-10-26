@@ -11,21 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108092031) do
-
-  create_table "books", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "image_url"
-    t.string   "source_url"
-    t.integer  "category_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "published",   default: true
-    t.string   "author",      default: ""
-  end
-
-  add_index "books", ["name", "category_id"], name: "index_books_on_name_and_category_id", unique: true
+ActiveRecord::Schema.define(version: 20141026134930) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -35,22 +21,6 @@ ActiveRecord::Schema.define(version: 20140108092031) do
   end
 
   add_index "categories", ["name", "section_id"], name: "index_categories_on_name_and_section_id", unique: true
-
-  create_table "ckeditor_assets", force: true do |t|
-    t.string   "data_file_name",               null: false
-    t.string   "data_content_type"
-    t.integer  "data_file_size"
-    t.integer  "assetable_id"
-    t.string   "assetable_type",    limit: 30
-    t.string   "type",              limit: 30
-    t.integer  "width"
-    t.integer  "height"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
-  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
 
   create_table "links", force: true do |t|
     t.string   "url"
