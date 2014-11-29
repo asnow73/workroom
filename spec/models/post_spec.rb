@@ -9,6 +9,7 @@ describe Post do
   it { should respond_to(:content) }
   it { should respond_to(:category) }
   it { should respond_to(:published) }
+  it { should respond_to(:preview) }
 
   it { should be_valid }
 

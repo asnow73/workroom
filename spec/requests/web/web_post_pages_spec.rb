@@ -1,6 +1,6 @@
 require 'spec_helper'
-# require 'application_helper'
-# include ApplicationHelper
+require './app/helpers/application_helper'
+include ApplicationHelper
 
 
 describe "Web post" do
@@ -39,6 +39,18 @@ describe "Web post" do
       end
     end
 
+    describe "type of preview" do
+      let!(:empty_preview) { FactoryGirl.create(:post, title: "summary post preview", preview: "") }
+      let!(:nil_preview) { FactoryGirl.create(:post, title: "summary post preview", preview: nil) }
+      let!(:preview_post) { FactoryGirl.create(:post, title: "post preview", preview: "some preview") }
+      before do
+        visit posts_path
+      end
+      it { should have_content(summary_for_html_text(empty_preview.content)) }
+      it { should have_content(summary_for_html_text(nil_preview.content)) }
+      it { should have_content(preview_post.preview) }
+    end
+
     describe "not show unpublished posts" do
       let!(:published_post) { FactoryGirl.create(:post, title: "published post") }
       let!(:unpublished_post) { FactoryGirl.create(:post, title: "unpublished post", published: false) }
@@ -56,7 +68,7 @@ describe "Web post" do
       it "should list each post" do
         Post.order('created_at DESC').paginate(page: 1).each do |post|
           should have_link("#{post.title}", href: post_path(post) )
-          # should have_content(summary_for_html_text(post.content)) TODO
+          should have_content(summary_for_html_text(post.content))
           should have_link(post.category.name, href: category_posts_path(post.category))
         end
       end

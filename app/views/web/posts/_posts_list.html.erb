@@ -22,14 +22,18 @@
                         </ul>-->
 
                         <div class="blog-content">
-                          <!--<h2><%= post.title %></h2>-->
                           <h2><%= link_to post.title, post_path(post) %></h2>
                           <p>
-                            <div><%= summary_for_html_text(post.content) %></div>
+                            <%if (post.preview == nil) || (post.preview.empty?) %>
+                              <div><%= summary_for_html_text(post.content) %></div>
+                            <%else%>
+                              <div><%= post.preview.html_safe %></div>
+                            <%end%>
+                            
                             <div>
-                            </br>
-                            <span class="color-green">Категория: </span>
-                            <%= link_to post.category.name, category_posts_path(post.category) %>
+                              </br>
+                              <span class="color-green">Категория: </span>
+                              <%= link_to post.category.name, category_posts_path(post.category) %>
                             </div>
                           </p>
                           <%= link_to "Читать польностью", post_path(post), class: "read-more" %>

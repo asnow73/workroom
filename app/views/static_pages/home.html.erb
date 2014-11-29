@@ -4,17 +4,12 @@
 	<div class="inner-content">
 
     <div class="row">
-	    <div class="col-md-8">
+	    <div class="col-md-12">
 	      <h3>Заметки</h3>
 
 	      <%= render 'web/posts/posts_list', posts: @posts %>
 	      <%= link_to "Все заметки...", posts_path, class: "show-more" %>
 	    </div>
-
-			<div class="col-md-4">
-				<h3>Полезные ссылки</h3>
-				<%= render 'web/links/links_list', links: @links %>
-			</div>
 
 		</div>
 
