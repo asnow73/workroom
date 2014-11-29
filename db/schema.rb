@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141026134930) do
+ActiveRecord::Schema.define(version: 20141129140605) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20141026134930) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "published",   default: true
+    t.text     "preview"
   end
 
   add_index "posts", ["title", "category_id"], name: "index_posts_on_title_and_category_id", unique: true

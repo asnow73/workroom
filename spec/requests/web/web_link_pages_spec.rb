@@ -1,6 +1,4 @@
 require 'spec_helper'
-# require 'application_helper'
-# include ApplicationHelper
 
 def prepare_data
   section_links = FactoryGirl.create(:section, name: "links")
@@ -77,7 +75,6 @@ describe "Web link" do
     it "should list each link" do
       @category_1.links.order('created_at DESC').paginate(page: 1).each do |link|
         should have_link("#{link.url}", href: link.url )
-        # should have_content(summary_for_html_text(link.description)) TODO        
       end
     end
 
