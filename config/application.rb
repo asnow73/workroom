@@ -28,6 +28,7 @@ module Workroom
 
     config.autoload_paths += %W(#{config.root}/app/helpers/modules)
     
+    config.assets.paths << "#{Rails.root}/app/assets/stylesheets/laboq/fonts" 
     config.assets.compile = true
     #config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
   end
