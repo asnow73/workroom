@@ -3,9 +3,7 @@ $(document).ready(function () {
 });
 
 function initValueSearchBox() {
-	alert("hello");
 	var searchValue = URI(document.URL).search(true)["search"];
-	alert(searchValue);
 	$('#search-box').val(searchValue);
 
 	/*
