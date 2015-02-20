@@ -5,26 +5,23 @@
 						<div class="row">
 							<div class="col-md-9">
 								<div class="blog-box">
-
-
 									<%= render 'web/posts/posts_list', posts: @posts %>
 									<%= will_paginate @posts %>
-
-									<!--<a class="older-posts" href="#">Older Posts</a>-->
 								</div>
 							</div>
 
 							<div class="col-md-3">
 								<div class="sidebar">
 
-									<!--<div class="search-widget widget">
-										<form>
-											<input type="search" placeholder="Search here..."/>
+									<div class="search-widget widget">
+										<%= form_tag posts_path, :method => 'get', enforce_utf8: false do %>											
+											<%= text_field_tag 'search', nil, placeholder: 'Search here...', id: "search-box", type: "search" %>
 											<button type="submit">
 												<i class="fa fa-search"></i>
 											</button>
-										</form>
-									</div>-->
+										<% end %>
+										<!-- <a id="search-link" href="#">MySearch</a> -->
+									</div>
 
 									<%= render 'web/shared/fixed_list_categories', categories: @categories, path_creator: method(:category_posts_path) %>
 
@@ -48,7 +45,6 @@
 											<li><a href="#">December 2013 <span>(46)</span></a></li>
 										</ul>
 									</div>-->
-
 								</div>
 							</div>
 

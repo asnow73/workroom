@@ -30,6 +30,14 @@ describe "Web post" do
     before do
       visit posts_path
     end
+    
+    it "should have search box" do
+      #should have_selector("div", search-widget widget)
+      #raise page.find("div")[:class].include?("search-widget")
+      #page.should have_css('div#search-widget')
+
+      #expect(page).to have_content('div#search-widget')
+    end
 
     #it { should have_title("Web posts") }
     it { should have_selector("div", text: "Заметки") }

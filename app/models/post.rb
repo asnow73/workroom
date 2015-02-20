@@ -8,4 +8,12 @@ class Post < ActiveRecord::Base
     section = Section.find_by_name("posts")
     Category.where(section_id: section)
   end
+
+  def self.search(posts_params)
+    posts = scoped
+    posts = posts.where(published: true)
+    posts = posts.where(category_id: posts_params[:category_id]) if posts_params.has_key?(:category_id)
+    posts = posts.where("title LIKE ?", "%" + posts_params[:search] + "%") if posts_params.has_key?(:search)
+    posts
+  end
 end

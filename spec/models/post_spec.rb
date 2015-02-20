@@ -46,4 +46,15 @@ describe Post do
     it { should be_valid }
   end  
 
+  describe "searching posts" do
+    let!(:post1) { FactoryGirl.create(:post, title: "mytitle1") }
+    let!(:post2) { FactoryGirl.create(:post, title: "mytitle2") }
+    let!(:post3) { FactoryGirl.create(:post, title: "message") }
+
+    it "select 2 posts by key word" do
+      posts = Post.search({search: "title"})
+      expect(posts.count).to eq 2
+    end
+  end
+
 end
