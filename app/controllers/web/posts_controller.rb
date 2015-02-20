@@ -2,11 +2,7 @@ class Web::PostsController < ApplicationController
   include Publishable
 
   def index
-    if posts_params.has_key?(:category_id)
-      @posts = Post.where(category_id: posts_params[:category_id], published: true)
-    else
-      @posts = Post.where(published: true)
-    end
+    @posts = Post.search(posts_params)
     @q = @posts.ransack params[:q]
     @posts = @q.result.order('created_at DESC').page(params[:page])
     @categories = Post.categories
@@ -24,6 +20,6 @@ class Web::PostsController < ApplicationController
 
   private
     def posts_params
-      params.permit(:category_id)
+      params.permit(:category_id, :search)
     end
 end
