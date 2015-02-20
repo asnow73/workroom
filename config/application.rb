@@ -27,6 +27,8 @@ module Workroom
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
 
     config.autoload_paths += %W(#{config.root}/app/helpers/modules)
+    
+    config.assets.compile = true
     #config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
   end
 end
