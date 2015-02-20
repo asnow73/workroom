@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
     posts = scoped
     posts = posts.where(published: true)
     posts = posts.where(category_id: posts_params[:category_id]) if posts_params.has_key?(:category_id)
-    posts = posts.where("title LIKE ?", "%" + posts_params[:search] + "%") if posts_params.has_key?(:search)
+    posts = posts.where("lower(title) LIKE lower(?)", "%" + posts_params[:search] + "%") if posts_params.has_key?(:search)
     posts
   end
 end
