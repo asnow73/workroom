@@ -1,0 +1,8 @@
+<div class="search-widget widget">
+	<%= form_tag posts_path, :method => 'get', enforce_utf8: false do %>
+		<%= text_field_tag 'search', nil, placeholder: 'Search here...', id: "search-box", type: "search" %>
+		<button type="submit">
+			<i class="fa fa-search"></i>
+		</button>
+	<% end %>
+</div>
