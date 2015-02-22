@@ -5,7 +5,7 @@
   <%= link_to 'Новая заметка...', new_admin_post_path, :class => 'btn btn-primary' %>
 </div>
 <!--<table id="example" class="table table-bordered">-->
-<table id="post-datatable" class="display" data-source="<%= admin_posts_url(format: "json") %>" cellspacing="0" width="100%">
+<table id="post-datatable" class="display" cellspacing="0" width="100%">
 	<thead>
 		<tr>
       <th>ID</th>
@@ -17,6 +17,28 @@
       <th></th>
 		</tr>
   </thead>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th><input id="create-at-filter" type="text" class="clearable"/></th>
+      <th><input id="title-filter" type="text" class="clearable"/></th>
+      <th>
+        <select id="category-filter" data-placeholder="" style="width: 100%" class="chosen-select-deselect" multiple tabindex="12">
+          <% @categories.each do |category| %>
+            <option value="<%= category.id %>"><%= category.name %></option>
+          <% end %>
+        </select>
+      </th>
+      <th>
+        <select id="published-filter" data-placeholder="" style="width: 100%" class="chosen-select-deselect" multiple tabindex="12">
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+      </th>
+      <th></th>
+      <th></th>
+    </tr>
+  </tfoot>
 	<tbody>
   </tbody>
 </table>

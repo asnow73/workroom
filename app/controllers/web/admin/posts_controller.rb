@@ -3,7 +3,9 @@ class Web::Admin::PostsController < Web::Admin::AdminApplicationController
     #@q = Post.ransack params[:q]
     #@posts = @q.result.order(sort_string).page(params[:page])
     respond_to do |format|
-      format.html
+      format.html do
+        @categories = Category.all
+      end
       format.json do
         render json: PostDatatable.new(view_context)
       end

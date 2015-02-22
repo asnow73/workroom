@@ -35,11 +35,16 @@ private
   end
 
   def fetch_posts
-    posts = Post.order("#{sort_column} #{sort_direction}")
-    posts = posts.page(page).per_page(per_page)
     if params[:sSearch].present?
-      posts = posts.where("title like :search", search: "%#{params[:sSearch]}%")
+      posts = Post.search({search: params[:sSearch]})
+    else
+      posts = Post.all
     end
+    posts = posts.order("#{sort_column} #{sort_direction}")
+    posts = posts.page(page).per_page(per_page)
+    #if params[:sSearch].present?
+    #  posts = posts.where("title like :search", search: "%#{params[:sSearch]}%")
+    #end
     posts
   end
 
@@ -52,7 +57,7 @@ private
   end
 
   def sort_column
-    columns = %w[title created_at published category_id]
+    columns = %w[id created_at title category_id published] 
     columns[params[:iSortCol_0].to_i]
   end
 
