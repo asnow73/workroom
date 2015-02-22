@@ -4,44 +4,19 @@
 <div class="button_new_record_db">
   <%= link_to 'Новая заметка...', new_admin_post_path, :class => 'btn btn-primary' %>
 </div>
-<table class="table table-bordered">
+<!--<table id="example" class="table table-bordered">-->
+<table id="post-datatable" class="display" data-source="<%= admin_posts_url(format: "json") %>" cellspacing="0" width="100%">
 	<thead>
 		<tr>
-			<th><%= sort_link @q, :id %></th>
-      <th><%= sort_link @q, :created_at %></th>
-			<th><%= sort_link @q, :title %></th>
-      <th><%= sort_link @q, :category %></th>
-      <th><%= sort_link @q, :published %></th>
-			<th></th>
+      <th>ID</th>
+      <th>Created At</th>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Published</th>
+      <th></th>
+      <th></th>
 		</tr>
-		<tbody>
-      <% @posts.each do |item| %>
-        <tr>
-        	<td><%= item.id %></td>
-          <td><%= item.created_at %></td>
-        	<td><%= link_to item.title, post_path(item) %></td>
-          <td><%= item.category.name %></td>
-          <% if item.published %>
-            <td class = "public-content"><%= item.published %></td>
-          <% else %>
-            <td class = "unpublic-content"><%= item.published %></td>
-          <% end %>
-        	<td>
-            <div class="btn-group">
-          		<%= link_to edit_admin_post_path(item), class: 'btn btn-success btn-sm' do %>
-          		  Изм.
-          		<% end %>
-
-  						<%= link_to admin_post_path(item), method: :delete, data: { confirm: "Вы уверены?" }, class: 'btn btn-danger btn-sm' do %>
-                Удал.
-  						<% end %>
-            </div>
-
-        	</td>
-        </tr>
-      <% end %>
-    </tbody>
-	</thead>
+  </thead>
+	<tbody>
+  </tbody>
 </table>
-
-<%= will_paginate @posts %>

@@ -5,7 +5,7 @@ class Web::PostsController < ApplicationController
     @posts = Post.search(posts_params)
     @q = @posts.ransack params[:q]
     @posts = @q.result.order('created_at DESC').page(params[:page])
-    @categories = Post.categories
+    @categories = Post.categories    
   end
 
   def show

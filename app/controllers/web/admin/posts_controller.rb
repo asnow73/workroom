@@ -1,7 +1,13 @@
 class Web::Admin::PostsController < Web::Admin::AdminApplicationController
   def index
-    @q = Post.ransack params[:q]
-    @posts = @q.result.order(sort_string).page(params[:page])
+    #@q = Post.ransack params[:q]
+    #@posts = @q.result.order(sort_string).page(params[:page])
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: PostDatatable.new(view_context)
+      end
+    end
   end
 
   def new
