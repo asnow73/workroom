@@ -66,6 +66,15 @@ function fiterField(idElement, numColumn, table) {
   }
 }
 
+function showKeys(obj) {
+    var keys = [];
+    for (var key in obj) {
+        keys.push(key);
+    }
+    alert(keys);
+    //return keys;
+}
+
 $(document).ready(function() {
 	// Установка полей фильтра
   //setFilterColumn();
@@ -85,7 +94,7 @@ $(document).ready(function() {
   setChosenValue(filterCategory, '#category-filter');
   setChosenValue(filterPublished, '#published-filter');
 
-  $('#post-datatable').dataTable({
+  var table = $('#post-datatable').DataTable({
   	"bProcessing": true,
     "bServerSide": true,
     "sAjaxSource": '/admin/posts.json',//$('#post-datatable').data('source')
@@ -97,12 +106,12 @@ $(document).ready(function() {
     },
 
     //установка фильтров значениями из URL
-    "aoSearchCols": [
-      null,
-      { "oSearch": filterCreateAt },
-      { "oSearch": filterTitle },
-      { "oSearch": filterCategory },
-      { "oSearch": filterPublished }
+    "searchCols": [
+        null,
+        { "search": filterCreateAt },
+        { "search": filterTitle },
+        { "search": filterCategory },
+        { "search": filterPublished }
     ],
 
     "aoColumns": [
