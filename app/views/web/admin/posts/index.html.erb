@@ -4,44 +4,41 @@
 <div class="button_new_record_db">
   <%= link_to 'Новая заметка...', new_admin_post_path, :class => 'btn btn-primary' %>
 </div>
-<table class="table table-bordered">
+<!--<table id="example" class="table table-bordered">-->
+<table id="post-datatable" class="display" cellspacing="0" width="100%">
 	<thead>
 		<tr>
-			<th><%= sort_link @q, :id %></th>
-      <th><%= sort_link @q, :created_at %></th>
-			<th><%= sort_link @q, :title %></th>
-      <th><%= sort_link @q, :category %></th>
-      <th><%= sort_link @q, :published %></th>
-			<th></th>
+      <th>ID</th>
+      <th>Created At</th>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Published</th>
+      <th></th>
+      <th></th>
 		</tr>
-		<tbody>
-      <% @posts.each do |item| %>
-        <tr>
-        	<td><%= item.id %></td>
-          <td><%= item.created_at %></td>
-        	<td><%= link_to item.title, post_path(item) %></td>
-          <td><%= item.category.name %></td>
-          <% if item.published %>
-            <td class = "public-content"><%= item.published %></td>
-          <% else %>
-            <td class = "unpublic-content"><%= item.published %></td>
+  </thead>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th><input id="create-at-filter" type="text" class="clearable"/></th>
+      <th><input id="title-filter" type="text" class="clearable"/></th>
+      <th>
+        <select id="category-filter" data-placeholder="" style="width: 100%" class="chosen-select-deselect" multiple tabindex="12">
+          <% @categories.each do |category| %>
+            <option value="<%= category.id %>"><%= category.name %></option>
           <% end %>
-        	<td>
-            <div class="btn-group">
-          		<%= link_to edit_admin_post_path(item), class: 'btn btn-success btn-sm' do %>
-          		  Изм.
-          		<% end %>
-
-  						<%= link_to admin_post_path(item), method: :delete, data: { confirm: "Вы уверены?" }, class: 'btn btn-danger btn-sm' do %>
-                Удал.
-  						<% end %>
-            </div>
-
-        	</td>
-        </tr>
-      <% end %>
-    </tbody>
-	</thead>
+        </select>
+      </th>
+      <th>
+        <select id="published-filter" data-placeholder="" style="width: 100%" class="chosen-select-deselect" multiple tabindex="12">
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+      </th>
+      <th></th>
+      <th></th>
+    </tr>
+  </tfoot>
+	<tbody>
+  </tbody>
 </table>
-
-<%= will_paginate @posts %>
