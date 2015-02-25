@@ -4,6 +4,10 @@ class Post < ActiveRecord::Base
   validates :title, :category_id, :content, presence: true
   validates :title, uniqueness: { scope: :category_id, case_sensitive: false }
 
+  #scope :published_filter, ->(pub) { where(published: pub) }
+  #scope :title_like_filter, ->(title) { where("title like ?", "%#{title}%") }
+  #scope :category_filter, ->(category_id) { where(category_id: category_id) }
+
   def self.categories
     section = Section.find_by_name("posts")
     Category.where(section_id: section)
@@ -18,7 +22,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.filter(params)
-    posts = scoped
+    posts = Post.all
     posts = posts.where("lower(title) LIKE lower(?)", "%" + params[:sSearch_2] + "%") if params.has_key?(:sSearch_2) && !params[:sSearch_2].empty?
     posts = posts.order("#{sort_column(params[:iSortCol_0].to_i)} #{params[:sSortDir_0]}")
     
@@ -39,18 +43,29 @@ class Post < ActiveRecord::Base
     pg = getPage(params)
     pp = getPerPage(params)
     posts = posts.page(pg).per_page(pp)
+    #posts = posts.page(2).per_page(10)
+    #posts = posts.paginate(:page => params[:page], :per_page => 30)
+
+    puts "AAAA LLLLL RRRRR " << pg.to_s << " " << pp.to_s << " | " << params[:iDisplayStart].to_s << " " << params[:iDisplayLength].to_s
+
+    #posts = posts.offset(params[:iDisplayStart]).limit(params[:iDisplayLength])
     posts
   end
 
-  private
+  #def self.filter2(params)
+  #  posts = where(nil) #creates an anonymous scope
+  #end
+
+  
     def self.getPage(params)
-      params[:iDisplayStart].to_i/per_page + 1
+      params[:iDisplayStart].to_i/getPerPage(params) + 1
     end
 
     def self.getPerPage(params)
       params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
     end
-
+  
+  private
     def self.sort_column(number_column)
       columns = %w[id created_at title category_id published] 
       columns[number_column]

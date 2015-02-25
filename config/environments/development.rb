@@ -1,4 +1,8 @@
 Workroom::Application.configure do
+
+  ENV['TRUSTED_IP'] ||= '10.0.2.2'
+
+  BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
