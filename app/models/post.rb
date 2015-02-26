@@ -1,6 +1,9 @@
 class Post < ActiveRecord::Base
   belongs_to :category
 
+  #accepts_nested_attributes_for :tag_list
+  acts_as_taggable
+
   validates :title, :category_id, :content, presence: true
   validates :title, uniqueness: { scope: :category_id, case_sensitive: false }
 
@@ -14,7 +17,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.search(posts_params)
-    posts = scoped
+    posts = Post.all
     posts = posts.where(published: true)
     posts = posts.where(category_id: posts_params[:category_id]) if posts_params.has_key?(:category_id)
     posts = posts.where("lower(title) LIKE lower(?)", "%" + posts_params[:search] + "%") if posts_params.has_key?(:search)

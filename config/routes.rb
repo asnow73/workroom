@@ -17,11 +17,12 @@ Workroom::Application.routes.draw do
       match '/signout', to: 'sessions#destroy',     via: 'delete'
     end
 
-    resources :category, only: [] do
+    resources :category, only: [] do      
       resources :posts, only: [:index]
       resources :links, only: [:index], action: "index_category_links"
     end
 
+    get 'tags/:tag', to: 'posts#index', as: :tag
     resources :posts, only: [:index, :show]
     resources :links, only: [:index]
   end

@@ -8,6 +8,7 @@
                       <div class="blog-post">
                         <!--<img alt="" src="upload/blog5.jpg">-->
                         <div class="postblog-content">
+                          
                           <!--<ul class="post-tags">
                             <li>
                               <p>premiumlayers</p>
@@ -36,6 +37,10 @@
                                 <div><%= post.preview.html_safe %></div>
                               <%end%>
                               
+                              <div>
+                                Tags: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+                              </div>
+
                               <div>
                                 </br>
                                 <span class="color-green">Категория: </span>

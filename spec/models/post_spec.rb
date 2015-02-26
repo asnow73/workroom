@@ -10,6 +10,7 @@ describe Post do
   it { should respond_to(:category) }
   it { should respond_to(:published) }
   it { should respond_to(:preview) }
+  it { should respond_to(:tag_list) }
 
   it { should be_valid }
 

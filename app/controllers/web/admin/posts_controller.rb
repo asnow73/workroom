@@ -51,7 +51,7 @@ class Web::Admin::PostsController < Web::Admin::AdminApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :preview, :category_id, :published)
+      params.require(:post).permit(:title, :content, :preview, :category_id, :published, :tag_list)
     end
 
 end
