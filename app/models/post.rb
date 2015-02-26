@@ -1,6 +1,9 @@
 class Post < ActiveRecord::Base
   belongs_to :category
 
+  #accepts_nested_attributes_for :tag_list
+  acts_as_taggable
+
   validates :title, :category_id, :content, presence: true
   validates :title, uniqueness: { scope: :category_id, case_sensitive: false }
 

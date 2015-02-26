@@ -10,6 +10,8 @@
 
   <%= f.association :category, collection: @categories_for_posts, include_blank: false, label: 'Категория' %>
 
+  <%= f.input :tag_list, label: 'Tags (разделенные запятой)' %>
+
   <%= f.input :published, label: 'Опубликованно', as: :boolean %>
   
  <div class="tabpages">

@@ -1,0 +1,15 @@
+<div class="widget tags-widget">
+	<h2>Tags</h2>
+	<ul class="tags-list">
+		<!--
+		<li><a href="#">web design</a></li>
+		<li><a href="#">logo</a></li>
+		<li><a href="#">php</a></li>
+		<li><a href="#">ecommerce</a></li>
+		<li><a href="#">development</a></li>
+		<li><a href="#">graphic</a></li>-->
+		<% tag_cloud Post.tag_counts, %w[small-tag middle-tag large-tag] do |tag, css_class| %>
+		  <li><%= link_to tag.name, tag_path(tag.name), class: css_class %></li>
+		<% end %>
+	</ul>
+</div>

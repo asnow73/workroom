@@ -13,6 +13,11 @@
 												<h2><%= @post.title %></h2>
 												<%= @post.content.html_safe %>
 												<p>
+
+												<div>
+                          Tags: <%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+                        </div>
+
 												<div>
 													<span class="color-green">Категория: </span>
 												  <%= link_to "#{@post.category.name}", posts_path(posts: {category_id: @post.category} ) %>

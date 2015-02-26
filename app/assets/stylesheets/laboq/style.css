@@ -514,8 +514,8 @@ ul.tags-list li {
 
 ul.tags-list li a {
     display: inline-block;
-    color: #a3a3a3;
-    font-size: 12px;
+    /*color: #a3a3a3;
+    font-size: 12px;*/
     font-family: Courier New;
     padding: 8px 12px;
     background: #fff;
@@ -525,6 +525,18 @@ ul.tags-list li a {
     -moz-transition: all 0.17s ease-in-out;
     -webkit-transition: all 0.17s ease-in-out;
     -o-transition: all 0.17s ease-in-out; 
+}
+
+ul.tags-list li a.large-tag {
+  font-size: 1.3em;
+}
+
+ul.tags-list li a.middle-tag {
+  font-size: 1.0em;
+}
+
+ul.tags-list li a.small-tag {
+  font-size: 0.7em;
 }
 
 ul.tags-list li a:hover {
